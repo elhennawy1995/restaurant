@@ -16,7 +16,7 @@ class CreateMenuSidesTable extends Migration
         Schema::create('sides', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('side_id')->unsigned();
-            $table->foreign('side')->references('id')->on('menu_items');
+            $table->foreign('side_id')->references('id')->on('menu_items');
             $table->integer('item_id')->unsigned();
             $table->foreign('item_id')->references('id')->on('menu_items');
             $table->timestamps();
