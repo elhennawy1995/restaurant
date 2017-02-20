@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -40,19 +41,31 @@ class LoginController extends Controller
     }
 
     public function login()
-    {
-        $userdata = array(
-        'email'     => Input::get('email'),
-        'password'  => Input::get('password')
-        );
-        if(Auth::attempt($userdata))
+    {   
+        $remember = request('remember');
+        $credentials =  request()->only(['email','password']);
+        if($remember)
         {
-            return redirect('/');
+           if(Auth::attempt($credentials,$remember))
+           {
+                return redirect('/');
+           }
         }
         else
         {
-            return redirect()->back();
+           if(Auth::attempt($credentials))
+           {
+                return redirect('/');
+           }
+
         }
+        return redirect('login');
+    }
+    public function logout()
+    {
+        Auth::logout();
+        Session::flush();
+        return redirect('/');
     }
         
 }

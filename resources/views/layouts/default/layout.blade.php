@@ -7,10 +7,11 @@
     <!-- BEGIN HEAD -->
      <head>
         <meta charset="utf-8" />
-        <title>Metronic Admin Theme #2 | Blank Page Layout</title>
+        <title>Resturant Forecasting Tool</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Preview page of Metronic Admin Theme #2 for blank page layout" name="description" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
@@ -19,6 +20,18 @@
         <link href="/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN UPLOADFORM PLUGINS -->
+        <link href="/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+        <link href="/global/plugins/jquery-file-upload/blueimp-gallery/blueimp-gallery.min.css" rel="stylesheet" type="text/css" />
+        <link href="/global/plugins/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" type="text/css" />
+        <link href="/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" type="text/css" />
+        <!-- END UPLOAD PLUGINS -->
+        <!-- BEGIN MULTI SELECT PLUGINS -->
+        <link href="/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+        <link href="/global/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css" />
+        <link href="/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- END MULTI SELECT PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
         <link href="/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
@@ -28,6 +41,10 @@
         <link href="/layouts/admin2/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="/layouts/admin2/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
+        <link href="/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+        <link href="/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link href="/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
 
@@ -39,58 +56,9 @@
             <!-- BEGIN CONTENT -->
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
-                <div class="page-content">
+                <div class="page-content bg-white">
                     <!-- BEGIN PAGE HEADER-->
-
-                    <h1 class="page-title"> Blank Page Layout
-                        <small>blank page layout</small>
-                    </h1>
-                    <div class="page-bar">
-                        <ul class="page-breadcrumb">
-                            <li>
-                                <i class="icon-home"></i>
-                                <a href="index.html">Home</a>
-                                <i class="fa fa-angle-right"></i>
-                            </li>
-                            <li>
-                                <a href="#">Blank Page</a>
-                                <i class="fa fa-angle-right"></i>
-                            </li>
-                            <li>
-                                <span>Page Layouts</span>
-                            </li>
-                        </ul>
-                        <div class="page-toolbar">
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true"> Actions
-                                    <i class="fa fa-angle-down"></i>
-                                </button>
-                                <ul class="dropdown-menu pull-right" role="menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon-bell"></i> Action</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon-shield"></i> Another action</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon-user"></i> Something else here</a>
-                                    </li>
-                                    <li class="divider"> </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon-bag"></i> Separated link</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END PAGE HEADER-->
-                    <div class="note note-info">
-                        <p> A black page template with a minimal dependency assets to use as a base for any custom page you create </p>
-                    </div>
+                    @yield('content')
                 </div>
                 <!-- END CONTENT BODY -->
             </div>
@@ -120,16 +88,59 @@
             <script src="/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
             <script src="/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
             <script src="/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+            <!-- BEGIN UPLOADFORM PLUGINS -->
+            <script src="/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/vendor/tmpl.min.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/vendor/load-image.min.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/vendor/canvas-to-blob.min.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/blueimp-gallery/jquery.blueimp-gallery.min.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/jquery.fileupload-process.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/jquery.fileupload-image.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/jquery.fileupload-audio.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/jquery.fileupload-video.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/jquery.fileupload-validate.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-file-upload/js/jquery.fileupload-ui.js" type="text/javascript"></script>
+            <script src="/pages/scripts/form-fileupload.min.js" type="text/javascript"></script>
+            <!-- END UPLOADFORM PLUGINS -->
+            <!-- BEGIN MULTI SELECT PLUGINS -->
+            <script src="/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+            <script src="/global/plugins/jquery-multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
+            <script src="/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+            <!-- END MULTI SELECT PLUGINS -->
+            <!-- BEGIN MULTI SELECT SCRIPTS -->
+            <script src="/js/supplier_items_multi_select.js" type="text/javascript"></script>
+            <!-- END MULTI SELECT SCRIPTS -->
             <!-- END CORE PLUGINS -->
             <!-- BEGIN THEME GLOBAL SCRIPTS -->
             <script src="/global/scripts/app.min.js" type="text/javascript"></script>
             <!-- END THEME GLOBAL SCRIPTS -->
+            </script>
+            <script src="/pages/scripts/components-bootstrap-select.min.js" type="text/javascript"></script>
+            <script src="/global/scripts/datatable.js" type="text/javascript"></script>
+            <script src="/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+            <script src="/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+             <!-- BEGIN FORM REPEATER PLUGINS -->
+            <script src="/global/plugins/jquery-repeater/jquery.repeater.js" type="text/javascript"></script>
+            <script src="/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+            <!-- END FORM REAPETER PLUGINS -->
+            <!-- BEGIN FORM REAPETER SCRIPTS -->
+            <script src="/pages/scripts/form-repeater.min.js" type="text/javascript"></script>
+            <script src="/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+            <!-- END FORM REPEATER SCRIPTS -->
             <!-- BEGIN THEME LAYOUT SCRIPTS -->
             <script src="/layouts/admin2/scripts/layout.min.js" type="text/javascript"></script>
             <script src="/layouts/admin2/scripts/demo.min.js" type="text/javascript"></script>
             <script src="/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
             <script src="/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
             <!-- END THEME LAYOUT SCRIPTS -->
+            <!-- BEGIN AUTHER SCRIPTS -->
+            <script src="/js/branches-datatable.js" type="text/javascript"></script>
+            <script src="/js/users-datatable.js" type="text/javascript"></script>
+            <!-- END AUTHER SCRIPTS -->
+
     </body>
 
 </html>

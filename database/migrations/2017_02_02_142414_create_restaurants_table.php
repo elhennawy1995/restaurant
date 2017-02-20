@@ -16,12 +16,14 @@ class CreateRestaurantsTable extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
-            $table->integer('cuisine_id')->unsigned();
-            $table->foreign('cuisine_id')->references('id')->on('cuisine');
+            $table->string('description')->nullable();
             $table->boolean('dine_in');
             $table->boolean('to_go');
             $table->boolean('delivery');
+            $table->boolean('breakfast');
+            $table->boolean('brunch');
+            $table->boolean('lunch');
+            $table->boolean('dinner');
             $table->string('facebook');
             $table->string('twitter');
             $table->string('instagram');

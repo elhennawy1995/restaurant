@@ -18,6 +18,10 @@ class CreateMenuItemsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('price');
+            $table->boolean('breakfast');
+            $table->boolean('brunch');
+            $table->boolean('lunch');
+            $table->boolean('dinner');
             $table->integer('menu_id')->unsigned();
             $table->foreign('menu_id')->references('id')->on('menus');
             $table->timestamps();

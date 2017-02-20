@@ -224,7 +224,6 @@ var Login = function() {
                 form[0].submit();
             }
         });
-
         $('.register-form input').keypress(function(e) {
             if (e.which == 13) {
                 if ($('.register-form').validate().form()) {
@@ -233,6 +232,63 @@ var Login = function() {
                 return false;
             }
         });
+        $('.reset-password-form').validate({
+            errorElement: 'span', //default input error message container
+            errorClass: 'help-block', // default input error message class
+            focusInvalid: false, // do not focus the last invalid input
+            ignore: "",
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true
+                },
+                password_confirmation: {
+                    equalTo: "#reset_password"
+                },
+            },
+
+            messages: { // custom messages for radio buttons and checkboxes
+            },
+
+            invalidHandler: function(event, validator) { //display error alert on form submit   
+
+            },
+
+            highlight: function(element) { // hightlight error inputs
+                $(element)
+                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+            },
+
+            success: function(label) {
+                label.closest('.form-group').removeClass('has-error');
+                label.remove();
+            },
+
+            errorPlacement: function(error, element) {
+                if (element.closest('.input-icon').size() === 1) {
+                    error.insertAfter(element.closest('.input-icon'));
+                } else {
+                    error.insertAfter(element);
+                }
+            },
+
+            submitHandler: function(form) {
+                form[0].submit();
+            }
+        });
+        $('.reset-password-form input').keypress(function(e) {
+            if (e.which == 13) {
+                if ($('.reset-password-form').validate().form()) {
+                    $('.reset-password-form').submit();
+                }
+                return false;
+            }
+        });
+
+      
 
         jQuery('#register-btn').click(function() {
             jQuery('.login-form').hide();
