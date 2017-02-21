@@ -23,7 +23,24 @@ class Restaurant extends Model
     {
         return $this->belongsToMany('App\User');
     }
-    	
 
-    	
+    public function items()
+    {
+        return $this->hasMany('App\Item');
+    }
+    
+    // public function categoryItems($category_id)
+    // {
+    //     return $this->belongsToMany('App\Item','menu_item_category')->where('menu_item_category.category_id',$category_id);
+    
+    // }    
+    // public function sides()
+    // {
+    //     return 
+    //     \DB::select(
+    //         '
+    //         select `menu_items`.* from `menu_items` WHERE menu_items.id in (SELECT `menu_item_category`.`item_id` FROM menu_item_category WHERE category_id=4 and menu_items.restaurant_id =
+    //         '.$this->id.')'
+    //         );
+    // }
 }

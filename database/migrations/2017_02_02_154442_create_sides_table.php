@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsDisposablesTable extends Migration
+class CreateSidesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateItemsDisposablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu_items_disposables', function (Blueprint $table) {
+        Schema::create('sides', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('side_id')->unsigned();
+            $table->foreign('side_id')->references('id')->on('menu_items');
             $table->integer('item_id')->unsigned();
             $table->foreign('item_id')->references('id')->on('menu_items');
-            $table->integer('disposable_id')->unsigned();
-            $table->foreign('disposable_id')->references('id')->on('disposables');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateItemsDisposablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menu_items_disposables');
+        Schema::dropIfExists('sides');
     }
 }

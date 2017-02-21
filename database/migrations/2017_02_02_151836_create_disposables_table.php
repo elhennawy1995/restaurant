@@ -15,8 +15,10 @@ class CreateDisposablesTable extends Migration
     {
         Schema::create('disposables', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
+            $table->integer('item_id')->unsigned();
+            $table->foreign('item_id')->references('id')->on('menu_items');
+            $table->integer('disposable_id')->unsigned();
+            $table->foreign('disposable_id')->references('id')->on('menu_items');
             $table->timestamps();
         });
     }

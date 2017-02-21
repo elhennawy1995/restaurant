@@ -20,22 +20,32 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurant = User::find(Auth::user()->id)->restaurant()->get();
-        $restaurant_cuisines_object = Restaurant::find($restaurant[0]->id)->cuisines()->get()->toArray();
-        $restaurant_cuisines = [];
-        foreach ($restaurant_cuisines_object as $rc) 
+        $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
+        if($restaurant)
         {
-            $restaurant_cuisines [] = $rc['id'];
+            $restaurant_cuisines_object = Restaurant::find($restaurant->id)->cuisines()->get()->toArray();
+            $restaurant_cuisines = [];
+            foreach ($restaurant_cuisines_object as $rc) 
+            {
+                $restaurant_cuisines [] = $rc['id'];
+            }
+            $branches = Restaurant::find($restaurant->id)->branches()->get();
+            $users = Restaurant::find($restaurant->id)->user()->get();
         }
-        $branches = Restaurant::find($restaurant[0]->id)->branches()->get();
-        $users = Restaurant::find($restaurant[0]->id)->user()->get();
+        else
+        {
+            $branches=[];
+            $users=[];
+            $restaurant_cuisines=[];
+        }
         $cuisines = Cuisine::all();
         return view('restaurant.index')
-                ->with('restaurant',$restaurant[0])
+                ->with('restaurant',$restaurant)
                 ->with('branches',$branches)
                 ->with('cuisines',$cuisines)
                 ->with('users',$users)
                 ->with('restaurant_cuisines',$restaurant_cuisines);
+        
     }
 
     /**

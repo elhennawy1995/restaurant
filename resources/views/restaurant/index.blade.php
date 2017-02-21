@@ -2,7 +2,7 @@
 @section('content')
 <h2 class="font-blue-ebonyclay"> Basic info
 </h2>
-@if($restaurant->id)
+@if($restaurant)
 <form action="/restaurant/{{$restaurant->id}}" class="form-horizontal" method="post">
 <input type="hidden" name="restaurant_id" id="restaurant_id" 
     value="{{$restaurant->id or old($restaurant_id) }}">
@@ -16,9 +16,13 @@
 	<div class="form-group">
 	    <div class="col-md-6">
 	        <input type="text" class="form-control spinner" name="name"
-            value="{{ $restaurant->name or old($name) }}"> 
+            @if($restaurant)
+            value="{{ $restaurant->name or old($name) }}"
+            @endif
+            > 
 	    </div>
 	</div>
+    @if($restaurant)
 	<h3 class="font-blue-ebonyclay"> Branches</h3>
 	<div class="form-group col-md-12">
 		<div class="table-toolbar">
@@ -59,7 +63,7 @@
             </tbody>
         </table>
 	</div>
-
+    @endif
 	<h3 class="font-blue-ebonyclay"> Cuisines</h3>
     <div class="form-group">
 	    <div class="col-md-4">
@@ -80,25 +84,25 @@
 			<label class="mt-checkbox mt-checkbox-outline">
                 <input type="hidden" name="breakfast"  value="0" >
 				<input type="checkbox" name="breakfast" value="1"  
-                {{($restaurant->breakfast? 'checked' : '')}} /> Breakfast
+                {{( ($restaurant && $restaurant->breakfast) ? 'checked' : '' )}} /> Breakfast
 				<span></span>
 			</label>
             <label class="mt-checkbox mt-checkbox-outline">
                 <input type="hidden" name="brunch"  value="0" >
                 <input type="checkbox" name="brunch" value="1"
-                {{($restaurant->brunch ? 'checked' : '')}}/> Brunch
+                {{( ($restaurant && $restaurant->brunch ? 'checked' : '' ) )}}/> Brunch
                 <span></span>
             </label>
 			<label class="mt-checkbox mt-checkbox-outline">
                 <input type="hidden" name="lunch"  value="0" >
 				<input type="checkbox" name="lunch" value="1"
-                {{($restaurant->lunch? 'checked' : '')}}/> Lunch
+                {{( ($restaurant && $restaurant->lunch? 'checked' : '') )}}/> Lunch
 				<span></span>
 			</label>
 			<label class="mt-checkbox mt-checkbox-outline">
                 <input type="hidden" name="dinner"  value="0" >
 				<input type="checkbox" name="dinner" value="1"
-                {{($restaurant->dinner? 'checked' : '')}}/> Dinner
+                {{( ($restaurant && $restaurant->dinner? 'checked' : '' ) )}}/> Dinner
 				<span></span>
 			</label>
 		</div>
@@ -109,25 +113,26 @@
 			<label class="mt-checkbox mt-checkbox-outline">
                 <input type="hidden" name="dine_in"  value="0" >
 				<input type="checkbox" name="dine_in"  value="1" 
-                {{($restaurant->dine_in ? 'checked' : '')}}/> Dine in
+                {{( ($restaurant && $restaurant->dine_in ? 'checked' : ''))}}/> Dine in
 				<span></span>
 			</label>
 			<label class="mt-checkbox mt-checkbox-outline">
                 <input type="hidden" name="to_go"  value="0" >
 				<input type="checkbox" name="to_go" value="1" 
-                {{($restaurant->to_go ? 'checked' : '')}}/> To go
+                {{( ($restaurant && $restaurant->to_go ? 'checked' : ''))}}/> To go
 				<span></span>
 			</label>
 			<label class="mt-checkbox mt-checkbox-outline">
                 <input type="hidden" name="delivery"  value="0" >
 				<input type="checkbox" name="delivery" value="1"
-                {{($restaurant->delivery ? 'checked' : '')}}/> Delivery
+                {{( ($restaurant && $restaurant->delivery ? 'checked' : ''))}}/> Delivery
 				<span></span>
 			</label>
 		</div>
 	</div>
+    @if($restaurant)
 	<h3 class="font-blue-ebonyclay"> Users</h3>
-		<div class="form-group col-md-12">
+	<div class="form-group col-md-12">
 		<div class="table-toolbar">
             <div class="row">
                 <div class="col-md-6">
@@ -168,6 +173,7 @@
             </tbody>
         </table>
 	</div>
+    @endif
 
 </div>
 <div class="form-actions">

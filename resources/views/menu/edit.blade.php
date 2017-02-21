@@ -2,9 +2,6 @@
 @section('content')
 <h2 class="font-blue-ebonyclay"> Menu
 </h2>
-@if(!$restaurant)
-<span>Please set up a restaurant first.</span>
-@else
 <h3 class="font-blue-ebonyclay"> Items
 </h3>
 <div class="table-scrollable table-scrollable-borderless">
@@ -39,7 +36,7 @@
                     <a href="/menu/{{$item->id}}/edit" class="edit" href="javascript:;"> Edit </a>
                 </td>
                 <td>
-                    <a  class="delete" href="javascript:;"> Delete </a>
+                    <a class="delete" href="javascript:;"> Delete </a>
                 </td>
             </tr>
             @endforeach
@@ -49,27 +46,28 @@
 </div>
 
 
-<h2 class="font-blue-ebonyclay"> Add Item</h2>
-<form action="/menu" method="post" class="form-horizontal " id="add_menu_item">
+<h2 class="font-blue-ebonyclay"> Edit Item</h2>
+@if($eidt_item)
+<form action="/menu/{{$eidt_item->id}}" method="post" class="form-horizontal " id="edit_menu_item">
 {{csrf_field()}}
-<input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
+<input name="_method" type="hidden" value="PUT">
 <div class="form-body">	
     <h3 class="font-blue-ebonyclay"> Item name</h3>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="name"> 
+            <input type="text" class="form-control spinner" name="name" value="{{$eidt_item->name}}"> 
         </div>
     </div>
     <h3 class="font-blue-ebonyclay"> Price</h3>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="price"> 
+            <input type="text" class="form-control spinner" name="price" value="{{$eidt_item->price}}"> 
         </div>
     </div>
     <h3 class="font-blue-ebonyclay"> Description</h3>
     <div class="form-group">
         <div class="col-md-6">
-            <textarea class="form-control spinner" name="description"> </textarea>
+            <textarea class="form-control spinner" name="description"> {{$eidt_item->description}}</textarea>
         </div>
     </div>    
     <h3 class="font-blue-ebonyclay">Sides</h3>
@@ -78,7 +76,11 @@
             <select class="bs-select form-control" name="sides[]" multiple>
             @if($sides)
             @foreach($sides as $side)
-                <option value="{{$side->id}}">{{$side->name}}</option>
+                <option value="{{$side->id}}"
+                @if(in_array($side->id, $item_sides))
+                selected = "selected"
+                @endif
+                >{{$side->name}}</option>
             @endforeach
             @endif
             </select>
@@ -90,7 +92,11 @@
             <select class="bs-select form-control" name="disposables[]" multiple>
             @if($disposables)
             @foreach($disposables as $disposable)
-                <option value="{{$disposable->id}}">{{$disposable->name}}</option>
+                <option value="{{$disposable->id}}"
+                @if(in_array($disposable->id, $item_disposables))
+                selected = "selected"
+                @endif
+                >{{$disposable->name}}</option>
             @endforeach
             @endif
             </select>
@@ -102,7 +108,11 @@
         @if($categories)
         @foreach($categories as $category)
             <label class="mt-checkbox mt-checkbox-outline">
-                <input type="checkbox" name="categories[]" value="{{$category->id}}" /> {{$category->name}}
+                <input type="checkbox" name="categories[]" value="{{$category->id}}"
+                @if(in_array($category->id, $item_categories))
+                checked = "true"
+                @endif
+                 /> {{$category->name}}
                 <span></span>
             </label>
         @endforeach
@@ -115,7 +125,11 @@
 		@if($meal_types)
         @foreach($meal_types as $type)
             <label class="mt-checkbox mt-checkbox-outline">
-                <input type="checkbox" name="meal_types[]" value="{{$type->id}}" /> {{$type->name}}
+                <input type="checkbox" name="meal_types[]" value="{{$type->id}}" 
+                @if(in_array($type->id, $item_meal_types))
+                checked='true'
+                @endif
+                /> {{$type->name}}
                 <span></span>
             </label>
         @endforeach

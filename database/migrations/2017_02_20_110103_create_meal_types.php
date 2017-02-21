@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenuSidesTable extends Migration
+class CreateMealTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateMenuSidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sides', function (Blueprint $table) {
+        Schema::create('meal_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('side_id')->unsigned();
-            $table->foreign('side_id')->references('id')->on('menu_items');
-            $table->integer('item_id')->unsigned();
-            $table->foreign('item_id')->references('id')->on('menu_items');
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateMenuSidesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sides');
+        //
     }
 }
