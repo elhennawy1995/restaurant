@@ -37,28 +37,30 @@
     </table>
 </div>
 
-
-<h2 class="font-blue-ebonyclay"> Add Supplier</h2>
-<form action="suppliers" class="form-horizontal " method="post">
+@if($edit_supplier)
+<h2 class="font-blue-ebonyclay"> Edit Supplier</h2>
+<form action="/suppliers/{{$edit_supplier->id}}" class="form-horizontal " method="post">
 {{csrf_field()}}
-<input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
+<input name="_method" type="hidden" value="PUT">
 <div class="form-body">	
     <h3 class="font-blue-ebonyclay"> Name</h3>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="name"> 
+            <input type="text" class="form-control spinner" name="name"
+            value="{{$edit_supplier->name}}"> 
         </div>
     </div>
     <h3 class="font-blue-ebonyclay"> Address</h3>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="address"> 
+            <input type="text" class="form-control spinner" name="address"
+            value="{{$edit_supplier->address}}"> 
         </div>
     </div>
     <h3 class="font-blue-ebonyclay"> Description</h3>
     <div class="form-group">
         <div class="col-md-6">
-            <textarea class="form-control spinner" name="description"> </textarea>
+            <textarea class="form-control spinner" name="description">{{$edit_supplier->description}}</textarea>
         </div>
     </div>
     <h3 class="font-blue-ebonyclay"> Items</h3>
@@ -66,11 +68,12 @@
         <select multiple="multiple" class="multi-select" id="supplier_items_multi_select" name="supplier_items[]">
         @if($items)
         @foreach($items as $item)
-        @if(!$item->supplier_id)
             <option value="{{$item->id}}" 
+            @if(in_array($item->id, $supplier_items))
+            selected
+            @endif
             >
             {{$item->name}} </option>
-        @endif
         @endforeach
         @endif
         </select>
@@ -88,7 +91,7 @@
     </div>
 </div>
 </form>
-
+@endif
 @endif
 
 </div>

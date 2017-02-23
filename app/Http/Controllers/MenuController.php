@@ -20,18 +20,14 @@ class MenuController extends Controller
     public function index()
     {
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
+        $items = '';
+        $sides = '';
+        $disposables = '';
         if($restaurant)
         {
             $items = $restaurant->with('items.sides')->with('items.categories')->get()->first()->items;
             $sides = Category::find(4)->restaurantItems($restaurant->id)->get();
             $disposables = Category::find(5)->restaurantItems($restaurant->id)->get();
-            // dd($dispsables);
-            // foreach ($items as $item) {
-            //     $item_sides = $item->sides;
-            // //     // $item_sides = Category::find(4)->itemSides($item->id)->get();
-            //     dd($item_sides);
-            // }
-
         }
         $categories = Category::all();
         $meal_types = MealType::all();
@@ -135,7 +131,7 @@ class MenuController extends Controller
         foreach ($item->meal_types as $type) {
             $item_meal_types [] = $type->id;
         }
-        return view('menu.edit')->with('eidt_item',$item)
+        return view('menu.edit')->with('edit_item',$item)
                                 ->with('items',$items)
                                 ->with('sides',$sides)
                                 ->with('disposables',$disposables)

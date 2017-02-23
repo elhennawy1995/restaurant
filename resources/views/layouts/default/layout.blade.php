@@ -140,6 +140,8 @@
             <script src="/js/branches-datatable.js" type="text/javascript"></script>
             <script src="/js/users-datatable.js" type="text/javascript"></script>
             <script src="/js/menu_items.js" type="text/javascript"></script>
+            <script src="/js/inventory_items.js" type="text/javascript"></script>
+            <script src="/js/suppliers.js" type="text/javascript"></script>
             <!-- END AUTHER SCRIPTS -->
 
     </body>

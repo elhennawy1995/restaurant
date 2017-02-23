@@ -47,27 +47,27 @@
 
 
 <h2 class="font-blue-ebonyclay"> Edit Item</h2>
-@if($eidt_item)
-<form action="/menu/{{$eidt_item->id}}" method="post" class="form-horizontal " id="edit_menu_item">
+@if($edit_item)
+<form action="/menu/{{$edit_item->id}}" method="post" class="form-horizontal " id="edit_menu_item">
 {{csrf_field()}}
 <input name="_method" type="hidden" value="PUT">
 <div class="form-body">	
     <h3 class="font-blue-ebonyclay"> Item name</h3>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="name" value="{{$eidt_item->name}}"> 
+            <input type="text" class="form-control spinner" name="name" value="{{$edit_item->name}}"> 
         </div>
     </div>
     <h3 class="font-blue-ebonyclay"> Price</h3>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="price" value="{{$eidt_item->price}}"> 
+            <input type="text" class="form-control spinner" name="price" value="{{$edit_item->price}}"> 
         </div>
     </div>
     <h3 class="font-blue-ebonyclay"> Description</h3>
     <div class="form-group">
         <div class="col-md-6">
-            <textarea class="form-control spinner" name="description"> {{$eidt_item->description}}</textarea>
+            <textarea class="form-control spinner" name="description"> {{$edit_item->description}}</textarea>
         </div>
     </div>    
     <h3 class="font-blue-ebonyclay">Sides</h3>

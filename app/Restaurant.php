@@ -28,7 +28,14 @@ class Restaurant extends Model
     {
         return $this->hasMany('App\Item');
     }
-    
+    public function inventory_items()
+    {
+        return $this->hasMany('App\InventoryItem');
+    }
+    public function suppliers()
+    {
+        return $this->hasMany('App\Supplier');
+    }    
     // public function categoryItems($category_id)
     // {
     //     return $this->belongsToMany('App\Item','menu_item_category')->where('menu_item_category.category_id',$category_id);

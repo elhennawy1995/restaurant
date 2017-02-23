@@ -25,8 +25,8 @@
         @foreach($items as $item)
             <tr id={{$item->id }}>
                 <td> {{$item->name }}</td>
-                <td>  {{$item->pu_count }} {{$item->purchase_unit->first()->name}} </td>
-                <td> {{$item->category->first()->name}} </td>
+                <td>  {{$item->pu_count }} {{$item->purchase_unit->name}} </td>
+                <td> {{$item->category->name}} </td>
                 <td> $ {{$item->pu_count * $item->pu_price}} </td>
                 <td>
                     <a href="/inventory/{{$item->id}}/edit" class="edit" href="javascript:;"> Edit </a>
@@ -41,22 +41,24 @@
     </table>
 </div>
 
-
-<h2 class="font-blue-ebonyclay"> Add Item</h2>
-<form action="/inventory" class="form-horizontal " method="POST">
+@if($edit_item)
+<h2 class="font-blue-ebonyclay"> Edit Item</h2>
+<form action="/inventory/{{$edit_item->id}}" class="form-horizontal " method="POST">
 {{csrf_field()}}
-<input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
+<input name="_method" type="hidden" value="PUT">
 <div class="form-body">	
     <h3 class="font-blue-ebonyclay"> Item name</h3>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="name"> 
+            <input type="text" class="form-control spinner" name="name"
+            value="{{$edit_item->name}}"> 
         </div>
     </div>
     <h3 class="font-blue-ebonyclay"> Description</h3>
     <div class="form-group">
         <div class="col-md-6">
-            <textarea class="form-control spinner" name="description"> </textarea>
+            <textarea class="form-control spinner" name="description"
+            >{{$edit_item->description}}</textarea>
         </div>
     </div>  
     <h3 class="font-blue-ebonyclay"> Category</h3>
@@ -66,7 +68,11 @@
             <option></option>
             @if($categories)
             @foreach($categories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
+                <option value="{{$category->id}}"
+                @if($category->id == $edit_item->category->id)
+                selected="selected"
+                @endif
+                >{{$category->name}}</option>
             @endforeach
             @endif
             </select>
@@ -79,7 +85,11 @@
                 <option></option>
                 @if($purchase_units)
                 @foreach($purchase_units as $unit)
-                    <option value="{{$unit->id}}">{{$unit->name}}</option>
+                    <option value="{{$unit->id}}"
+                    @if($unit->id == $edit_item->purchase_unit->id)
+                    selected="selected"
+                    @endif
+                    >{{$unit->name}}</option>
                 @endforeach
                 @endif
             </select>
@@ -88,13 +98,15 @@
     <h3 class="font-blue-ebonyclay"> Purchase Unit Count</h3>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="pu_count">
+            <input type="text" class="form-control spinner" name="pu_count"
+            value="{{$edit_item->pu_count}}">
         </div>
     </div>
     <h3>Purchase Unit Price (PUP)</h3>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="pu_price">
+            <input type="text" class="form-control spinner" name="pu_price"
+            value="{{$edit_item->pu_price}}">
         </div>
     </div>
     <h3 class="font-blue-ebonyclay"> Inventory Count Unit (CU)</h3>
@@ -104,7 +116,11 @@
                 <option></option>
                 @if($count_units)
                 @foreach($count_units as $unit)
-                    <option value="{{$unit->id}}">{{$unit->name}}</option>
+                    <option value="{{$unit->id}}"
+                    @if($unit->id == $edit_item->count_unit->id)
+                    selected="selected"
+                    @endif
+                    >{{$unit->name}}</option>
                 @endforeach
                 @endif
             </select>
@@ -113,20 +129,28 @@
     <h3>Number of Count Units per Purchase Unit (# of CU per PU)</h3>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="number" class="form-control spinner" name="number_of_cu_per_pu">
+            <input type="number" class="form-control spinner" name="number_of_cu_per_pu"
+            value="{{$edit_item->number_of_cu_per_pu }}">
         </div>
     </div>  
     <h3 class="font-blue-ebonyclay">Inventory Count Unit size(dimensions)</h3>
     <div class="form-inline" >
         <div class="form-group col-md-12">
-            <input type="text" class="form-control" name="cu_length" placeholder="Length"> 
-            <input type="text" class="form-control" name="cu_width" placeholder="Width"> 
-            <input type="text" class="form-control" name="cu_height" placeholder="Height">
+            <input type="text" class="form-control" name="cu_length" placeholder="Length"
+            value="{{$edit_item->cu_length}}"> 
+            <input type="text" class="form-control" name="cu_width" placeholder="Width"
+            value="{{$edit_item->cu_width}}"> 
+            <input type="text" class="form-control" name="cu_height" placeholder="Height"
+            value="{{$edit_item->cu_height}}">
             <select class="bs-select form-control col-md-4" name="cu_size_unit_id">
                 <option></option>
                 @if($units)
                 @foreach($units as $unit)
-                    <option value="{{$unit->id}}">{{$unit->name}}</option>
+                    <option value="{{$unit->id}}"
+                    @if($unit->id == $edit_item->count_unit_size_unit->id)
+                    selected="selected"
+                    @endif
+                    >{{$unit->name}}</option>
                 @endforeach
                 @endif
             </select> 
@@ -137,12 +161,17 @@
     <div class="form-inline col-md-8" >
         <div class="form-group">
             <input type="text" class="form-control" id="ersl" 
-            name="remaining_shelf_life" placeholder="0"> 
+            name="remaining_shelf_life" placeholder="0" 
+            value=" {{$edit_item->remaining_shelf_life}}"> 
             <select class="bs-select form-control col-md-4" name="remaining_shelf_life_unit_id">
                 <option></option>
                 @if($time_units)
                 @foreach($time_units as $unit)
-                    <option value="{{$unit->id}}">{{$unit->name}}</option>
+                    <option value="{{$unit->id}}"
+                    @if($unit->id == $edit_item->remaining_shelf_life_unit->id)
+                    selected="selected"
+                    @endif
+                    >{{$unit->name}}</option>
                 @endforeach
                 @endif
             </select> 
@@ -159,7 +188,7 @@
     </div>
 </div>
 </form>
-
+@endif
 </div>
 @endif
 @endsection
