@@ -86,7 +86,7 @@ var TableDatatablesEditable = function () {
             oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 3, false);
             oTable.fnDraw();
         }
-        function deleteRow(id) {
+        function deleteBranch(id) {
             $.ajaxSetup({
                 headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -190,7 +190,7 @@ var TableDatatablesEditable = function () {
             var nRow = $(this).parents('tr')[0];
             var id = $(this).parents('tr')[0].id;
             oTable.fnDeleteRow(nRow);
-            deleteRow(id);
+            deleteBranch(id);
             // alert("Deleted! Do not forget to do some ajax to sync with backend :)");
         });
 

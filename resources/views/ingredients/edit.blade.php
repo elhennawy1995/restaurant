@@ -107,7 +107,7 @@
                         <input type="number" name="amount" class="form-control form-control-inline col-md-4" value="" placeholder="Amount" /> 
                     </div>
                     <div class="mt-repeater-input  ">
-                            <select class="form-control" name="unit">
+                            <select class="form-control" name="unit_id">
                                 @if($units)
                                 @foreach($units as $unit)
                                     <option value="{{$unit->id}}">{{$unit->name}}</option>

@@ -88,7 +88,7 @@ var UserDatatablesEditable = function () {
             oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 3, false);
             oTable.fnDraw();
         }
-        function deleteRow(id) {
+        function deleteUser(id) {
             $.ajaxSetup({
                 headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -198,7 +198,7 @@ var UserDatatablesEditable = function () {
             var nRow = $(this).parents('tr')[0];
             var id = $(this).parents('tr')[0].id;
             oTable.fnDeleteRow(nRow);
-            deleteRow(id);
+            deleteUser(id);
         });
 
         table.on('click', '.cancel', function (e) {

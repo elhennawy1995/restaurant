@@ -22,7 +22,7 @@ class IngredientsController extends Controller
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
         if ($restaurant) 
         {
-            $items = $restaurant->with('items')->get()->first()->items;
+            $items = $restaurant->items()->get();
         }
         return view('ingredients.index')->with('restaurant',$restaurant)
                                     ->with('items',$items);
@@ -52,7 +52,7 @@ class IngredientsController extends Controller
             $count_unit = InventoryItem::find($ingredient['inventory_item_id'])->count_unit()->get();
             $count_unit_id = $count_unit[0]['id'];
             $ingredient['menu_item_id'] = request('menu_item_id');
-            $ingredient['count_unit'] = $count_unit_id;
+            $ingredient['count_unit_id'] = $count_unit_id;
             $ing = ItemIngredient::create( $ingredient );
        }
        return redirect()->back();
@@ -80,11 +80,13 @@ class IngredientsController extends Controller
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
         if ($restaurant) 
         {
-            $items = $restaurant->with('items')->get()->first()->items;
-            $selected_item = Item::find($id)->with('ingredients')->get()->first();
-            $ingredients = $selected_item->ingredients;
-            // dd($ingredients);
-            $inventory_items = $restaurant->with('inventory_items')->get()->first()->inventory_items;
+            $items = $restaurant->items()->get();
+            // $ingredients = ItemIngredient::with('inventory_item.purchase_unit')->where('menu_item_id',$id)->get();
+
+            $selected_item = Item::find($id);
+            $ingredients = $selected_item->ingredients()->with('inventory_item')->with('count_unit')->with('unit')->get();
+            // dd($ingredients->toArray());
+            $inventory_items = $restaurant->inventory_items()->get();
         }
         $units = Unit::all();
         return view('ingredients.edit')->with('restaurant',$restaurant)

@@ -18,10 +18,10 @@ class StoragesController extends Controller
     public function index()
     {
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
-        $storages = Storage::all();
+        $storages = $restaurant->storages()->get();
         $units = Unit::all();
         if ($restaurant) {
-            $items = $restaurant->with('inventory_items')->get()->first()->inventory_items;
+            $items = $restaurant->inventory_items()->get();
         }
         return view('storages.index')->with('restaurant',$restaurant)
                                         ->with('storages',$storages)
@@ -80,7 +80,7 @@ class StoragesController extends Controller
         if($selected_storage = Storage::find($id))
         {
             $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
-            $storages = Storage::all();
+            $storages = $restaurant->storages()->get();
             $selected_storage_items = $selected_storage->item()->with('storage')->get();
             $selected_storage_items_array = [];
             foreach ($selected_storage_items as $storage_item) {
@@ -89,7 +89,7 @@ class StoragesController extends Controller
             $selected_storage_items = $selected_storage_items_array;
             $units = Unit::all();
             if ($restaurant) {
-                $items = $restaurant->with('inventory_items')->get()->first()->inventory_items;
+                $items = $restaurant->inventory_items()->get();
             }
             return view('storages.edit')->with('restaurant',$restaurant)
                                             ->with('storages',$storages)
@@ -117,7 +117,10 @@ class StoragesController extends Controller
         {
             if( $storage->update( $request->all() ) )
             {
-                $storage->item()->sync($request->storage_items);
+                if($request->storage_items)
+                    $storage->item()->sync($request->storage_items);
+                else
+                    $storage->item()->sync([]);
                 return  redirect()->back();
             }
         }

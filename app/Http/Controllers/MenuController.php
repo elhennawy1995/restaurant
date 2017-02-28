@@ -25,7 +25,9 @@ class MenuController extends Controller
         $disposables = '';
         if($restaurant)
         {
-            $items = $restaurant->with('items.sides')->with('items.categories')->get()->first()->items;
+            // $items = $restaurant->with('items.sides')->with('items.categories')->get()->first()->items;
+            $items = $restaurant->items()->with('sides')->With('categories')->get();
+            // dd($items);
             $sides = Category::find(4)->restaurantItems($restaurant->id)->get();
             $disposables = Category::find(5)->restaurantItems($restaurant->id)->get();
         }

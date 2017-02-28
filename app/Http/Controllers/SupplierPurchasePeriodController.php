@@ -37,7 +37,8 @@ class SupplierPurchasePeriodController extends Controller
     {
         // dd($request->all());
         foreach ($request['group-a'] as $purchase_period) {
-            $purchase_period['active'] = $purchase_period['active'][0];
+            if(isset($purchase_period['active']))
+                $purchase_period['active'] = $purchase_period['active'][0];
             SupplierPurchasePeriod::create($purchase_period);
         }
         return redirect()->back();

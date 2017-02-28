@@ -3,7 +3,7 @@ table.on('click', '.delete', function (e) {
             e.preventDefault();
             var id = $(this).parents('tr')[0].id;
             var tr=$(this).parents('tr')[0];
-            deleteItem(id,tr);
+            deleteMenuItem(id,tr);
         });
 // table.on('click', '.edit', function (e) {
 //             e.preventDefault();
@@ -24,7 +24,7 @@ table.on('click', '.delete', function (e) {
 //     });
 // }
 
-function deleteItem(id,tr)
+function deleteMenuItem(id,tr)
 {
     $.ajaxSetup({
                 headers: {

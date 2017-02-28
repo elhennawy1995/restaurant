@@ -18,8 +18,12 @@ class SuppliersController extends Controller
     {
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
         if ($restaurant) {
-            $items = $restaurant->with('inventory_items')->get()->first()->inventory_items;
-            $suppliers = $restaurant->with('suppliers')->get()->first()->suppliers;
+            // $items = $restaurant->with('inventory_items')->get()->first()->inventory_items;
+            // $suppliers = $restaurant->with('suppliers')->get()->first()->suppliers;
+            $suppliers = $restaurant->suppliers()->get();
+            $items = $restaurant->inventory_items()->get();
+
+
             // dd($items);
         }
         return view('suppliers.index')->with('restaurant',$restaurant)
@@ -79,11 +83,12 @@ class SuppliersController extends Controller
     {
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
         if ($restaurant) {
-            $items = $restaurant->with('inventory_items')->get()->first()->inventory_items;
-            $suppliers = $restaurant->with('suppliers')->get()->first()->suppliers;
+            $items = $restaurant->inventory_items()->get();
+            // $items = $restaurant->with('inventory_items')->get()->first()->inventory_items;
+            $suppliers = $restaurant->suppliers()->get();
             // dd($items);
         }
-        $supplier = Supplier::find($id)->with('items')->get()->first();
+        $supplier = Supplier::where('id',$id)->with('items')->get()->first();
         $supplier_items = [];
         foreach ($supplier->items as $item) {
             $supplier_items [] = $item->id;

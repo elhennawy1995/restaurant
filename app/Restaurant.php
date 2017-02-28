@@ -26,7 +26,7 @@ class Restaurant extends Model
 
     public function items()
     {
-        return $this->hasMany('App\Item');
+        return $this->hasMany('App\Item','restaurant_id');
     }
     public function inventory_items()
     {
@@ -35,6 +35,10 @@ class Restaurant extends Model
     public function suppliers()
     {
         return $this->hasMany('App\Supplier');
+    }
+    public function storages()
+    {
+        return $this->hasMany('App\Storage');
     }
     public function purchase_restriction()
     {

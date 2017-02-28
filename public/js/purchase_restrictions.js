@@ -3,9 +3,9 @@ table.on('click', '.delete', function (e) {
             e.preventDefault();
             var id = $(this).parents('tr')[0].id;
             var tr=$(this).parents('tr')[0];
-            deleteItem(id,tr);
+            deleteRestriction(id,tr);
         });
-function deleteItem(id,tr)
+function deleteRestriction(id,tr)
 {
     $.ajaxSetup({
                 headers: {

@@ -21,7 +21,7 @@ class PurchaseRestrictionsController extends Controller
         if($restaurant)
         {
             $budget = $restaurant->purchase_restriction()->get()->first();
-            $suppliers = $restaurant->with('suppliers.restriction_period.period_unit')->get()->first()->suppliers;
+            $suppliers = $restaurant->suppliers()->with('restriction_period.period_unit')->get();
             // dd($suppliers);
         }
         $units = TimeUnit::all();

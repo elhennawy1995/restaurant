@@ -29,8 +29,7 @@ class InventoryController extends Controller
         $categories = InventoryCategory::all();
         $items = '';
         if ($restaurant) {
-            $items = $restaurant->with('inventory_items.purchase_unit')->
-            with('inventory_items.category')->get()->first()->inventory_items;
+            $items = $restaurant->inventory_items()->with('purchase_unit')->with('category')->get();
             // dd($items);
         }
         return view('inventory.index')->with('restaurant',$restaurant)
@@ -95,12 +94,13 @@ class InventoryController extends Controller
         $categories = InventoryCategory::all();
         $items = '';
         if ($restaurant) {
-            $items = $restaurant->with('inventory_items.purchase_unit')->
-            with('inventory_items.category')->get()->first()->inventory_items;
+            $items = $restaurant->inventory_items()->with('purchase_unit')->with('category')->get();
+            
             // dd($items);
         }
-        $item = InventoryItem::find($id)->with('category')->with('purchase_unit')
+        $item = InventoryItem::where('id',$id)->with('category')->with('purchase_unit')
         ->with('count_unit')->with('count_unit_size_unit')->with('remaining_shelf_life_unit')->get()->first();
+        // $item = InventoryItem::find($id);
         // dd($item);
         return view('inventory.edit')->with('restaurant',$restaurant)
                                     ->with('edit_item',$item)
