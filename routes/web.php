@@ -26,7 +26,9 @@ Route::group(['middleware'=>'auth'],function (){
 	Route::resource('/inventory','InventoryController');
 	Route::resource('/suppliers','SuppliersController');
 	Route::resource('/ingredients','IngredientsController');
+	Route::resource('/storages','StoragesController');
 	Route::resource('/purchase-restrictions','PurchaseRestrictionsController');
+	Route::resource('/supplier-purchase-period','SupplierPurchasePeriodController');
 
 });
 

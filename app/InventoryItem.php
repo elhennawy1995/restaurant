@@ -33,5 +33,9 @@ class InventoryItem extends Model
     {
         return $this->belongsToMany('App\Supplier','item_supplier','item_id','supplier_id');
     }
+    public function storage()
+    {
+        return $this->belongsToMany('App\Storage','item_storage');
+    }
     	
 }

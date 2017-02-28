@@ -43,6 +43,12 @@
                             </a>
                         </li>
                         <li class="nav-item ">
+                            <a href="/storages" class="nav-link nav-toggle">
+                                <i class="fa fa-archive"></i>
+                                <span class="title">Storages</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
                             <a href="/purchase-restrictions" class="nav-link nav-toggle">
                                 <i class="fa fa-cart-plus"></i>
                                 <span class="title">Purchasing restrictions</span>

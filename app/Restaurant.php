@@ -35,7 +35,11 @@ class Restaurant extends Model
     public function suppliers()
     {
         return $this->hasMany('App\Supplier');
-    }    
+    }
+    public function purchase_restriction()
+    {
+        return $this->hasOne('App\PurchaseRestriction');
+    }
     // public function categoryItems($category_id)
     // {
     //     return $this->belongsToMany('App\Item','menu_item_category')->where('menu_item_category.category_id',$category_id);

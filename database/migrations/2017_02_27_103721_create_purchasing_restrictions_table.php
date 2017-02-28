@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStoragesTable extends Migration
+class CreatePurchasingRestrictionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,12 @@ class CreateStoragesTable extends Migration
      */
     public function up()
     {
-        Schema::create('storages', function (Blueprint $table) {
+        Schema::create('purchase_restrictions',function(Blueprint $table){
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
-            $table->string('width');
-            $table->string('height');
-            $table->string('length');
-            $table->integer('unit_id')->unsigned();
-            $table->foreign('unit_id')->references('id')->on('units');
-            $table->integer('shelfs');
-            $table->integer('max_capacity');
+            $table->float('max_budget');
             $table->integer('restaurant_id')->unsigned();
             $table->foreign('restaurant_id')->references('id')->on('restaurants');
+            $table->integer('active')->default(0);
             $table->timestamps();
         });
     }
@@ -37,6 +30,6 @@ class CreateStoragesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('storages');
+        //
     }
 }

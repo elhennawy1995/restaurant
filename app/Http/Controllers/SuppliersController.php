@@ -127,9 +127,12 @@ class SuppliersController extends Controller
     {
         if($supplier = Supplier::find($id))
         {
-            if($supplier->items()->detach())
+            if($supplier->items())
+            {
+                $supplier->items()->detach();
                 if($supplier->delete())
                     return response('Deleted.',200);
+            }
         }
         return response('error',400);
 

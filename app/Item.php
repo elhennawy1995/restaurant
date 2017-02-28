@@ -25,5 +25,9 @@ class Item extends Model
     {
         return $this->belongsToMany('App\MealType','menu_item_meal_type','item_id','type_id');
     }
-
+    public function ingredients()
+    {
+        return $this->hasMany('App\ItemIngredient','menu_item_id');
+    }
+        
 }

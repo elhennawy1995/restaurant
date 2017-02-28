@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\PurchaseRestrictionRequest;
-use App\PurchaseRestriction;
-use App\TimeUnit;
-use App\User;
-use Auth;
+
+use App\SupplierPurchasePeriod;
 use Illuminate\Http\Request;
 
-class PurchaseRestrictionsController extends Controller
+class SupplierPurchasePeriodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +14,7 @@ class PurchaseRestrictionsController extends Controller
      */
     public function index()
     {
-        $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
-        if($restaurant)
-        {
-            $budget = $restaurant->purchase_restriction()->get()->first();
-            $suppliers = $restaurant->with('suppliers.restriction_period.period_unit')->get()->first()->suppliers;
-            // dd($suppliers);
-        }
-        $units = TimeUnit::all();
-        return view('purchase.index')->with('restaurant',$restaurant)
-                                    ->with('budget',$budget)
-                                    ->with('suppliers',$suppliers)
-                                    ->with('units',$units);
+        //
     }
 
     /**
@@ -47,10 +33,13 @@ class PurchaseRestrictionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PurchaseRestrictionRequest $request)
+    public function store(Request $request)
     {
-        if( PurchaseRestriction::create($request->all()) )
-            return redirect()->back();
+        // dd($request->all());
+        foreach ($request['group-a'] as $purchase_period) {
+            $purchase_period['active'] = $purchase_period['active'][0];
+            SupplierPurchasePeriod::create($purchase_period);
+        }
         return redirect()->back();
     }
 
@@ -85,14 +74,7 @@ class PurchaseRestrictionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $purchase_restriction = PurchaseRestriction::find($id);
-        if($purchase_restriction->update($request->all()))
-        {
-            if(!$request->has('active'))
-                $purchase_restriction->update(['active'=>0]);
-            return redirect()->back();
-        }
-        return redirect()->back();
+        //
     }
 
     /**
@@ -103,6 +85,10 @@ class PurchaseRestrictionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(SupplierPurchasePeriod::find($id)->delete())
+            {
+                return response('Deleted.',200);
+            }
+            return response('error',400);   
     }
 }
