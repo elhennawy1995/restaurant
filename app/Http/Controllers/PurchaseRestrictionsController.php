@@ -18,6 +18,8 @@ class PurchaseRestrictionsController extends Controller
     public function index()
     {
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
+        $budget = '';
+        $suppliers ='';
         if($restaurant)
         {
             $budget = $restaurant->purchase_restriction()->get()->first();

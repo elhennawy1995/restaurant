@@ -47,7 +47,11 @@
         <link href="/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
-
+    <style type="text/css">
+        thead{
+            background-color: #E1E5EC;
+        }
+    </style>
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
     	@include('headers.default.header')
         <!-- BEGIN CONTAINER -->

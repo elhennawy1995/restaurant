@@ -6,8 +6,8 @@
 @if(!$restaurant)
 <span>Please set up a restaurant first.</span>
 @else
-<h3 class="font-blue-ebonyclay"> Items
-</h3>
+<h4 class="font-blue-ebonyclay"> Items
+</h4>
 <div class="table-scrollable table-scrollable-borderless">
     <table class="table table-hover table-light" id="inventory_items_table">
         <thead>
@@ -47,19 +47,19 @@
 {{csrf_field()}}
 <input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
 <div class="form-body">	
-    <h3 class="font-blue-ebonyclay"> Item name</h3>
+    <h4 class="font-blue-ebonyclay"> Item name</h4>
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="name"> 
         </div>
     </div>
-    <h3 class="font-blue-ebonyclay"> Description</h3>
+    <h4 class="font-blue-ebonyclay"> Description</h4>
     <div class="form-group">
         <div class="col-md-6">
             <textarea class="form-control spinner" name="description"> </textarea>
         </div>
     </div>  
-    <h3 class="font-blue-ebonyclay"> Category</h3>
+    <h4 class="font-blue-ebonyclay"> Category</h4>
     <div class="form-group">
         <div class="col-md-4">
             <select class="bs-select form-control" name='category_id'>
@@ -72,7 +72,7 @@
             </select>
         </div>
     </div>
-    <h3 class="font-blue-ebonyclay"> Purchase Unit (PU)</h3>
+    <h4 class="font-blue-ebonyclay"> Purchase Unit (PU)</h4>
     <div class="form-group">
         <div class="col-md-4">
             <select class="bs-select form-control" name="purchase_unit_id">
@@ -85,19 +85,19 @@
             </select>
         </div>
     </div>
-    <h3 class="font-blue-ebonyclay"> Purchase Unit Count</h3>
+    <h4 class="font-blue-ebonyclay"> Purchase Unit Count</h4>
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="pu_count">
         </div>
     </div>
-    <h3>Purchase Unit Price (PUP)</h3>
+    <h4>Purchase Unit Price (PUP)</h4>
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="pu_price">
         </div>
     </div>
-    <h3 class="font-blue-ebonyclay"> Inventory Count Unit (CU)</h3>
+    <h4 class="font-blue-ebonyclay"> Inventory Count Unit (CU)</h4>
     <div class="form-group">
         <div class="col-md-4">
             <select class="bs-select form-control" name="count_unit_id">
@@ -110,13 +110,13 @@
             </select>
         </div>
     </div>
-    <h3>Number of Count Units per Purchase Unit (# of CU per PU)</h3>
+    <h4>Number of Count Units per Purchase Unit (# of CU per PU)</h4>
     <div class="form-group">
         <div class="col-md-4">
             <input type="number" class="form-control spinner" name="number_of_cu_per_pu">
         </div>
     </div>  
-    <h3 class="font-blue-ebonyclay">Inventory Count Unit size(dimensions)</h3>
+    <h4 class="font-blue-ebonyclay">Inventory Count Unit size(dimensions)</h4>
     <div class="form-inline" >
         <div class="form-group col-md-12">
             <input type="text" class="form-control" name="cu_length" placeholder="Length"> 
@@ -133,7 +133,7 @@
         </div>
     </div>
     <div class="form-group"></div>
-    <h3 class="font-blue-ebonyclay">Estimated remaining shelf life</h3>
+    <h4 class="font-blue-ebonyclay">Estimated remaining shelf life</h4>
     <div class="form-inline col-md-8" >
         <div class="form-group">
             <input type="text" class="form-control" id="ersl" 

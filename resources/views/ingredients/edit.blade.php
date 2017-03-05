@@ -1,13 +1,13 @@
 @extends('layouts.default.layout')
 @section('content')
 
-<h2 class="font-blue-ebonyclay"> Ingredients
-</h2>
+<!-- <h2 class="font-blue-ebonyclay"> Ingredients
+</h2> -->
 @if(!$restaurant)
 <span>Please set up a restaurant first.</span>
 @else
-<h3 class="font-blue-ebonyclay"> Menu items
-</h3>
+<h4 class="font-blue-ebonyclay"> Menu items
+</h4>
 <div class="table-scrollable table-scrollable-borderless">
     <table class="table table-hover table-light" id="items_table">
         <thead>
@@ -32,16 +32,17 @@
 </div>
 
 <div id="add_ingredients">
-    <h2 class="font-blue-ebonyclay">ingredients</h2>
+    <!-- <h2 class="font-blue-ebonyclay">ingredients</h2> -->
 <div class="portlet">   
-    <h3 class="font-blue-ebonyclay"> Selected Item</h3>
+    <h4 class="font-blue-ebonyclay"> Selected Item</h4>
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" value="{{$selected_item->name}}" class="form-control spinner" name="item_name" disabled> 
         </div>
     </div>
-    <br>
-    <h3 class="font-blue-ebonyclay"> Ingredients</h3>
+    <div></div></br>
+    <div></div></br>
+    <h4 class="font-blue-ebonyclay"> Ingredients</h4>
     <div class="table-scrollable table-scrollable-borderless">
         <table class="table table-hover table-light" id="ingredient_items_table">
             <thead>
@@ -71,7 +72,7 @@
         </table>
     </div>
 </div>
-<h3 class="font-blue-ebonyclay"> Select ingredients </h3>
+<h4 class="font-blue-ebonyclay"> Select ingredients </h4>
     <form action="/ingredients" class=" form-horizontal" method="post">
     {{csrf_field()}}
          <input class="mt-repeater-input form-control " type="hidden" name="menu_item_id" value="{{$selected_item->id}}">

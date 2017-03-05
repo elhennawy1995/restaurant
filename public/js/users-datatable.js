@@ -48,17 +48,22 @@ var UserDatatablesEditable = function () {
                 data: formData,
                 success:function(data){
                     console.log(data);
+                    var jqInputs = $('input', nRow);
+                    oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
+                    oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
+                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 2, false);
+                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 3, false);
+                    oTable.fnDraw();
                 },
                 error:function(data){
-                    console.log(data);
+                    var msg = JSON.parse(data.responseText);
+                    alert(msg.email[0]);
+                    oTable.fnDeleteRow(nEditing); // cancel
+                    nEditing = null;
+                    nNew = false;(oTable, nRow);
                 }
             });
-            var jqInputs = $('input', nRow);
-            oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
-            oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
-            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 2, false);
-            oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 3, false);
-            oTable.fnDraw();
+            
         }
         function updateRow(oTable, nRow,id) {
             var jqInputs = $('input', nRow);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewUserToRestaurantRequest;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewUserToRestaurantRequest $request)
     {
         $user = User::create($request->all());
         $restaurant_id = $request->get('restaurant_id');

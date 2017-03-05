@@ -12,7 +12,7 @@
 @endif
 {{csrf_field()}}
 <div class="form-body">	
-	<h3 class="font-blue-ebonyclay"> Resturant Name</h3>
+	<h4 class="font-blue-ebonyclay"> Resturant Name</h4>
 	<div class="form-group">
 	    <div class="col-md-6">
 	        <input type="text" class="form-control spinner" name="name"
@@ -23,7 +23,7 @@
 	    </div>
 	</div>
     @if($restaurant)
-	<h3 class="font-blue-ebonyclay"> Branches</h3>
+	<h4 class="font-blue-ebonyclay"> Branches</h4>
 	<div class="form-group col-md-12">
 		<div class="table-toolbar">
             <div class="row">
@@ -64,7 +64,7 @@
         </table>
 	</div>
     @endif
-	<h3 class="font-blue-ebonyclay"> Cuisines</h3>
+	<h4 class="font-blue-ebonyclay"> Cuisines</h4>
     <div class="form-group">
 	    <div class="col-md-4">
 	        <select class="bs-select form-control" name="cuisines[]" multiple required>
@@ -78,7 +78,7 @@
 	        </select>
 	    </div>
 	</div>
-	<h3 class="font-blue-ebonyclay"> Meals</h3>
+	<h4 class="font-blue-ebonyclay"> Meals</h4>
 	<div class="form-group col-md-12">
 		<div class="mt-checkbox-inline">
 			<label class="mt-checkbox mt-checkbox-outline">
@@ -107,7 +107,7 @@
 			</label>
 		</div>
 	</div>
-	<h3 class="font-blue-ebonyclay"> Restaurant	features</h3>
+	<h4 class="font-blue-ebonyclay"> Restaurant	features</h4>
 	<div class="form-group col-md-12">
 		<div class="mt-checkbox-inline">
 			<label class="mt-checkbox mt-checkbox-outline">
@@ -131,7 +131,7 @@
 		</div>
 	</div>
     @if($restaurant)
-	<h3 class="font-blue-ebonyclay"> Users</h3>
+	<h4 class="font-blue-ebonyclay"> Users</h4>
 	<div class="form-group col-md-12">
 		<div class="table-toolbar">
             <div class="row">

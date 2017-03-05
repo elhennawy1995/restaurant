@@ -20,6 +20,7 @@ class IngredientsController extends Controller
     public function index()
     {
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
+        $items = '';
         if ($restaurant) 
         {
             $items = $restaurant->items()->get();

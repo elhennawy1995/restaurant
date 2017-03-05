@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Requests\ItemRequest;
+use App\InventoryItem;
 use App\Item;
+use App\ItemPhoto;
 use App\MealType;
 use App\User;
 use Auth;
@@ -29,6 +31,7 @@ class MenuController extends Controller
             $items = $restaurant->items()->with('sides')->With('categories')->get();
             // dd($items);
             $sides = Category::find(4)->restaurantItems($restaurant->id)->get();
+            // dd($sides);
             $disposables = Category::find(5)->restaurantItems($restaurant->id)->get();
         }
         $categories = Category::all();
@@ -82,7 +85,17 @@ class MenuController extends Controller
                 foreach ( $request->meal_types as $type) 
                 {
                     $item->meal_types()->attach($type);
-                }       
+                } 
+            if ($request->hasFile('photo')) 
+            {
+                if ($request->file('photo')->isValid())
+                {
+                    if($path = $request->photo->store('uploads/menu-photos','public') ) 
+                    {
+                        ItemPhoto::create(['path'=>$path,'menu_item_id'=>$item_id]);
+                    }
+                }
+            }      
         }
         return redirect()->back();
     }
@@ -109,7 +122,8 @@ class MenuController extends Controller
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
         if($restaurant->id)
         {
-            $items = $restaurant->with('items.sides')->with('items.categories')->get()->first()->items;
+            // $items = $restaurant->with('items.sides')->with('items.categories')->get()->first()->items;
+            $items = $restaurant->items()->with('sides')->With('categories')->with('photo')->get();
             $sides = Category::find(4)->restaurantItems($restaurant->id)->get();
             $disposables = Category::find(5)->restaurantItems($restaurant->id)->get();
         }
@@ -117,7 +131,9 @@ class MenuController extends Controller
         $meal_types = MealType::all();
 
         $item = Item::find($id)->with('sides')->with('categories')->with('meal_types')->
-         with('disposables')->get()->first();
+         with('disposables')->with('photo')->where('id',$id)->get()->first();
+        // $item = Item::find($id)->sides()->categories()->meal_types()->
+        //  disposables()->get();
         $item_sides = [];
         $item_categories = [];
         $item_disposables = [];
@@ -182,7 +198,17 @@ class MenuController extends Controller
                 foreach ( $request->meal_types as $type) 
                 {
                     $item->meal_types()->attach($type);
-                }       
+                }
+            if ($request->hasFile('photo')) 
+            {
+                if ($request->file('photo')->isValid())
+                {
+                    if($path = $request->photo->store('uploads/menu-photos','public') )
+                    {
+                        ItemPhoto::create(['path'=>$path,'menu_item_id'=>$id]);
+                    }
+                }
+            }     
         }
         return redirect('/menu');
     }   
@@ -210,4 +236,81 @@ class MenuController extends Controller
         return response('error',400);
           
     }
+    public function available()
+    {   
+        $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
+        if ($restaurant) 
+        {
+            $items = $restaurant->items()->with('ingredients')->with('meal_types')->get();
+            $ingredients = $restaurant->ingredients()->with('inventory_item')->get()->toArray();
+            $ingredients_sum = [];
+            foreach ($ingredients as $ingredient) 
+            {
+                $ingredients_sum [$ingredient['inventory_item_id']] = 0;
+                $inventory_item_sum [$ingredient['inventory_item_id']] = 0;
+                $percentage [$ingredient['inventory_item_id']] = 0;
+            }
+            foreach ($ingredients as $ingredient) 
+            {
+                $ingredients_sum [$ingredient['inventory_item_id']] += 
+                $ingredient['amount'];
+
+                $inventory_item [$ingredient['inventory_item_id']]= InventoryItem::where('id',$ingredient['inventory_item_id'])->get()->toArray();
+                $inventory_item_sum [$ingredient['inventory_item_id']]
+                 +=
+                $inventory_item [$ingredient['inventory_item_id']] [0] ['number_of_cu_per_pu']
+                *
+                $inventory_item [$ingredient['inventory_item_id']] [0] ['pu_count'];
+                // var_dump($inventory_item [$ingredient['inventory_item_id']]);
+                 
+                $percentage [$ingredient['inventory_item_id']] = 
+                array(
+                
+                    "inventory_item_name"=>
+                    $inventory_item [$ingredient['inventory_item_id']] [0] ['name'],
+                    "percentage"=>
+                    ($ingredients_sum [$ingredient['inventory_item_id']] / $inventory_item_sum [$ingredient['inventory_item_id']] )*100
+
+                );
+            }
+            $unavailable_ingredients = [];
+            foreach ($percentage as $key => $p) 
+            {
+                if($p['percentage']>70)
+                    $unavailable_ingredients [] = $key;
+            }
+
+            $items = $items->toArray();
+            // dd($items);
+            $items_copy = [];
+            foreach($items as $key=>$item)
+            {   $items_copy [$key] = $item;
+                foreach($item['ingredients'] as $ingredient)
+                {
+                    if( in_array($ingredient['inventory_item_id'], $unavailable_ingredients) )
+                    {
+                        $items_copy[$key]['unavailable'] = true;
+                        // dd($item);
+                    }
+                }
+            
+            }
+
+        }
+        // dd($items_copy);
+        // $items_copy = $items;
+        // dd($items_copy);
+        $result = array();
+        foreach ($items_copy as $item) {
+            foreach ($item['meal_types'] as $type) 
+            {   //echo $type['name'];
+                $result[$type['name']] []= $item;
+            }
+        }
+        // dd($result);
+        return view('menu.available')->with('restaurant',$restaurant)
+                                    ->with('items',$items_copy)
+                                    ->with('result',$result);
+    }
+        
 }

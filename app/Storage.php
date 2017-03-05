@@ -13,5 +13,9 @@ class Storage extends Model
     {
     	return $this->belongsToMany('App\InventoryItem','item_storage');
     }
+    public function unit()
+    {
+    	return $this->belongsTo('App\Unit','unit_id');
+    }
     	
 }

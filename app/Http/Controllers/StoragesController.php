@@ -18,10 +18,12 @@ class StoragesController extends Controller
     public function index()
     {
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
-        $storages = $restaurant->storages()->get();
         $units = Unit::all();
+        $storages='';
+        $items = '';
         if ($restaurant) {
             $items = $restaurant->inventory_items()->get();
+            $storages = $restaurant->storages()->with('unit')->get();
         }
         return view('storages.index')->with('restaurant',$restaurant)
                                         ->with('storages',$storages)

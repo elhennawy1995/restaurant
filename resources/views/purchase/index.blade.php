@@ -3,10 +3,11 @@
 
 <h2 class="font-blue-ebonyclay"> Purchasing Restrictions
 </h2>
+<br>
 @if(!$restaurant)
 <span>Please set up a restauarnt first.</span>
 @else
-<h3 class="font-blue-ebonyclay"> Max purchasing budget constraint </h3>
+<h4 class="font-blue-ebonyclay"> Max purchasing budget constraint </h4>
 @if($budget)
 <form action="/purchase-restrictions/{{$budget->id}}" method="post">
 <input type="hidden" name="_method" value="PUT">
@@ -37,7 +38,9 @@
 	</div>
 
 </form>
-<h3 class="font-blue-ebonyclay"> Purchasing period constraint, purchase every </h3>
+<br>
+<br>
+<h4 class="font-blue-ebonyclay"> Purchasing period constraint, purchase every </h4>
     <div class="table-scrollable table-scrollable-borderless">
         <table class="table table-hover table-light" id="suppliers_purchase_period_table">
             <thead>

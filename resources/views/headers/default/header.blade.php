@@ -41,7 +41,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link nav-toggle font-blue-oleo">
+                                <a href="/shopping-cart" class="nav-link nav-toggle font-blue-oleo">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="title">
                                         Shopping cart
@@ -49,13 +49,14 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link nav-toggle font-blue-oleo">
-                                    <i class="fa fa-gear"></i>
+                                <a href="/available-menu" class="nav-link nav-toggle font-blue-oleo">
+                                    <i class="fa fa-cutlery"></i>
                                     <span class="title">
-                                        Settings
+                                        Menu (available items)
                                     </span>
                                 </a>
                             </li>
+                            
                         </ul>
                     </div>
                     <!-- BEGIN TOP NAVIGATION MENU -->

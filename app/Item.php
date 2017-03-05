@@ -29,5 +29,9 @@ class Item extends Model
     {
         return $this->hasMany('App\ItemIngredient','menu_item_id');
     }
+    public function photo()
+    {
+        return $this->hasMany('App\ItemPhoto','menu_item_id');
+    }
         
 }

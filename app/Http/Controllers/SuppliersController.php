@@ -17,6 +17,8 @@ class SuppliersController extends Controller
     public function index()
     {
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
+        $suppliers ='';
+        $items ='';
         if ($restaurant) {
             // $items = $restaurant->with('inventory_items')->get()->first()->inventory_items;
             // $suppliers = $restaurant->with('suppliers')->get()->first()->suppliers;

@@ -43,27 +43,27 @@
 {{csrf_field()}}
 <input name="_method" type="hidden" value="PUT">
 <div class="form-body">	
-    <h3 class="font-blue-ebonyclay"> Name</h3>
+    <h4 class="font-blue-ebonyclay"> Name</h4>
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="name"
             value="{{$edit_supplier->name}}"> 
         </div>
     </div>
-    <h3 class="font-blue-ebonyclay"> Address</h3>
+    <h4 class="font-blue-ebonyclay"> Address</h4>
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="address"
             value="{{$edit_supplier->address}}"> 
         </div>
     </div>
-    <h3 class="font-blue-ebonyclay"> Description</h3>
+    <h4 class="font-blue-ebonyclay"> Description</h4>
     <div class="form-group">
         <div class="col-md-6">
             <textarea class="form-control spinner" name="description">{{$edit_supplier->description}}</textarea>
         </div>
     </div>
-    <h3 class="font-blue-ebonyclay"> Items</h3>
+    <h4 class="font-blue-ebonyclay"> Items</h4>
     <div class="col-md-9">
         <select multiple="multiple" class="multi-select" id="supplier_items_multi_select" name="supplier_items[]">
         @if($items)

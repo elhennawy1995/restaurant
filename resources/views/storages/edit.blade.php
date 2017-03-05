@@ -1,13 +1,13 @@
 @extends('layouts.default.layout')
 @section('content')
 <div class="portlet m-grid m-grid-full-height">
-<h2 class="font-blue-ebonyclay"> Inventory
-</h2>
+<!-- <h2 class="font-blue-ebonyclay"> Inventory
+</h2>  -->
 @if(!$restaurant)
 <span>Please set up a restaurant first.</span>
 @else
-<h3 class="font-blue-ebonyclay"> Storages
-</h3>
+<h2 class="font-blue-ebonyclay"> Storages
+</h2>
 <div class="table-scrollable table-scrollable-borderless">
     <table class="table table-hover table-light" id="storages_table">
         <thead>
@@ -24,8 +24,8 @@
         @foreach($storages as $storage)
             <tr id="{{$storage->id}}">
                 <td> {{$storage->name }}</td>
-                <td>  </td>
-                <td>  </td>
+                <td>  {{$storage->length }} (l) {{$storage->width }} (w) {{$storage->height }} (h) {{$storage->unit->name }} </td>
+                <td>  {{$storage->shelfs}}</td>
                 <td>
                     <a href="/storages/{{$storage->id}}/edit" class="edit" href="javascript:;"> Edit </a>
                 </td>
@@ -46,20 +46,20 @@
 <input type="hidden" name="_method" value="PUT">
 <!-- <input type="hidden" name="restaurant_id" value="{{$restaurant->id}}"> -->
 <div class="form-body">	
-    <h3 class="font-blue-ebonyclay">Name </h3>
+    <h4 class="font-blue-ebonyclay">Name </h4>
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="name"
             value="{{$selected_storage->name}}"> 
         </div>
     </div>
-    <h3 class="font-blue-ebonyclay"> Description</h3>
+    <h4 class="font-blue-ebonyclay"> Description</h4>
     <div class="form-group">
         <div class="col-md-6">
             <textarea class="form-control spinner" name="description">{{$selected_storage->description}}</textarea>
         </div>
     </div>  
-    <h3 class="font-blue-ebonyclay">Storage size(dimensions)</h3>
+    <h4 class="font-blue-ebonyclay">Storage size(dimensions)</h4>
     <div class="form-inline" >
         <div class="form-group col-md-12">
             <input type="text" class="form-control" name="length" placeholder="Length"
@@ -83,7 +83,7 @@
         </div>
     </div>
     <div class="form-group"></div>
-    <h3 class="font-blue-ebonyclay">Number of shelfs</h3>
+    <h4 class="font-blue-ebonyclay">Number of shelfs</h4>
     <div class="form-inline col-md-8" >
         <div class="form-group">
             <input type="text" class="form-control"  
@@ -92,7 +92,7 @@
         </div>
     </div>
     <div class="form-group"></div>
-    <h3 class="font-blue-ebonyclay">Max. capacity %</h3>
+    <h4 class="font-blue-ebonyclay">Max. capacity %</h4>
     <div class="form-inline col-md-8" >
         <div class="form-group">
             <input type="text" class="form-control"  
@@ -101,7 +101,7 @@
         </div>
     </div>
     <div class="form-group"></div>
-    <h3 class="font-blue-ebonyclay"> Items</h3>
+    <h4 class="font-blue-ebonyclay"> Items</h4>
     <div class="col-md-9">
         <select multiple="multiple" class="multi-select" id="supplier_items_multi_select" name="storage_items[]">
         @if($items)

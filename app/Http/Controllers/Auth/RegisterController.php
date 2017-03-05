@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
 use App\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Validator;
 
@@ -36,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware(['guest','web']);
     }
 
     /**
@@ -48,10 +50,21 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            // 'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        // $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 
     /**
@@ -60,18 +73,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function register()
+    protected function create()
     {
         $login = $credentials = request()->only(['email','password']);
         $credentials['password'] = bcrypt($credentials['password']);
         $user = User::create($credentials);
-        if($user)
-        {
-            // \Auth::attempt($login);
-            $this->guard()->login($user);     
-        }
+        // if($user)
+        // {
+        //     // \Auth::attempt($login);
+        //     $this->guard()->login($user);     
+        // }
 
-        return redirect($this->redirectPath());
+        // return redirect($this->redirectPath());
+        return $user;
 
     }
 }

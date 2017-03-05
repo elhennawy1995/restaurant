@@ -44,6 +44,11 @@ class Restaurant extends Model
     {
         return $this->hasOne('App\PurchaseRestriction');
     }
+    public function ingredients()
+    {
+        return $this->hasManyThrough('App\ItemIngredient','App\Item','restaurant_id','menu_item_id');
+    }
+        
     // public function categoryItems($category_id)
     // {
     //     return $this->belongsToMany('App\Item','menu_item_category')->where('menu_item_category.category_id',$category_id);
