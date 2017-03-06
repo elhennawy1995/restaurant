@@ -227,6 +227,8 @@ class MenuController extends Controller
             $item->sides()->detach();
             $item->categories()->detach();
             $item->meal_types()->detach();
+            $item->photo()->delete();
+            $item->ingredients()->delete();
             if(Item::find($id)->delete())
             {
                 return response('Deleted.',200);
