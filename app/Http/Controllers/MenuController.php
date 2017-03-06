@@ -239,12 +239,13 @@ class MenuController extends Controller
     public function available()
     {   
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
+        $items_copy = [];
         if ($restaurant) 
         {
             $items = $restaurant->items()->with('ingredients')->with('meal_types')->with('photo')->get();
             $ingredients = $restaurant->ingredients()->with('inventory_item')->get()->toArray();
             $ingredients_sum = [];
-            $items_copy = [];
+            
             foreach ($ingredients as $ingredient) 
             {
                 $ingredients_sum [$ingredient['inventory_item_id']] = 0;

@@ -17,6 +17,7 @@ class ShoppingCartController extends Controller
     public function index()
     {
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
+        $percentage = array();
         if ($restaurant) {
             $items = $restaurant->items()->with('ingredients')->get();
             $ingredients = $restaurant->ingredients()->with('inventory_item')->get()->toArray();
