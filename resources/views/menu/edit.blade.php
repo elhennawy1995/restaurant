@@ -139,15 +139,15 @@
 	</div>
     <label>Replace image</label>
     <input type="file" name="photo">
-    @if($edit_item->relationLoaded('photo') )
+    @if( $edit_item->relationLoaded('photo') && $edit_item->photo->count()>0) 
     <img src="{{asset($edit_item->photo->last()->path)}}">
     @endif
     
 </div>
 <div class="form-actions">
     <div class="row">
-        <div class="col-md-offset-3 col-md-9">
-            <button type="submit" class="btn btn-circle green">Save</button>
+        <div class="col-md-offset-5 col-md-9">
+            <button type="submit" class="btn btn-circle green-turquoise">Save</button>
         </div>
     </div>
 </div>

@@ -12,46 +12,95 @@
                     <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
                     <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                     <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                        <li class="nav-item start ">
+                        <li class="nav-item start
+                        @if (Request::is('restaurant') or Request::is('restaurant/*'))
+                        active open
+                        @endif
+                        ">
                             <a href="/restaurant" class="nav-link nav-toggle">
                                 <i class="fa fa-info"></i>
                                 <span class="title">Basic info</span>
+                        @if (Request::is('restaurant') or Request::is('restaurant/*'))
+                        <span class="selected"></span>
+                        @endif
                             </a>
                         </li>
-                        <li class="nav-item  ">
+                        <li class="nav-item 
+                            @if (Request::is('menu') || Request::is('menu/*'))
+                            active open
+                            @endif
+                        ">
                             <a href="/menu" class="nav-link nav-toggle">
                                 <i class="fa fa-cutlery"></i>
                                 <span class="title">Menu </span>
+                            @if (Request::is('menu') || Request::is('menu/*'))
+                            <span class="selected"></span>
+                            @endif
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item 
+                            @if (Request::is('inventory') || Request::is('inventory/*'))
+                            active open
+                            @endif
+                        ">
                             <a href="/inventory" class="nav-link nav-toggle">
                                 <i class="fa fa-cubes"></i>
                                 <span class="title">Inventory</span>
+                                @if (Request::is('inventory') || Request::is('inventory/*'))
+                                <span class="selected"></span>
+                                @endif
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item 
+                            @if (Request::is('suppliers') || Request::is('suppliers/*'))
+                            active open
+                            @endif
+                        ">
                             <a href="/suppliers" class="nav-link nav-toggle">
                                 <i class="fa fa-group"></i>
                                 <span class="title">Suppliers</span>
+                                @if (Request::is('suppliers') || Request::is('suppliers/*'))
+                                <span class="selected"></span>
+                                @endif
                             </a>
                         </li>
-                        <li class="nav-item ">
+                        <li class="nav-item 
+                            @if (Request::is('ingredients') || Request::is('ingredients/*'))
+                            active open
+                            @endif
+                        ">
                             <a href="/ingredients" class="nav-link nav-toggle">
                                 <i class="fa fa-flask"></i>
                                 <span class="title">Ingredients</span>
+                                @if (Request::is('ingredients') || Request::is('ingredients/*'))
+                                <span class="selected"></span>
+                                @endif
                             </a>
                         </li>
-                        <li class="nav-item ">
+                        <li class="nav-item 
+                            @if (Request::is('storages') || Request::is('storages/*'))
+                            active open
+                            @endif
+                        ">
                             <a href="/storages" class="nav-link nav-toggle">
                                 <i class="fa fa-archive"></i>
                                 <span class="title">Storages</span>
+                                 @if (Request::is('storages') || Request::is('storages/*'))
+                                <span class="selected"></span>
+                                @endif
                             </a>
                         </li>
-                        <li class="nav-item ">
+                        <li class="nav-item 
+                            @if (Request::is('purchase-restrictions') || Request::is('purchase-restrictions/*'))
+                            active open
+                            @endif
+                        ">
                             <a href="/purchase-restrictions" class="nav-link nav-toggle">
                                 <i class="fa fa-cart-plus"></i>
                                 <span class="title">Purchasing restrictions</span>
+                                 @if (Request::is('purchase-restrictions') || Request::is('purchase-restrictions/*'))
+                                <span class="selected"></span>
+                                @endif
                             </a>
                         </li>
                     </ul>

@@ -33,7 +33,7 @@
                  @endif
                 >
 		    </div>
-            <input type="submit" name="submit" value="Save" class="btn btn-success">
+            <input type="submit" name="submit" value="Save" class="btn btn-circle green-turquoise">
 		</div>
 	</div>
 
@@ -112,7 +112,10 @@
 	                </div>
                     <a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
                         <i class="fa fa-plus"></i> Add</a>
-                    <input type="submit" name="submit" value="Save" class="btn btn-success">
+                   <div class="row">
+                        <div class="col-md-offset-5 col-md-9">
+                            <button type="submit" class="btn btn-circle green-turquoise">Save</button>
+                        </div>
 
                 </form>
             </div>

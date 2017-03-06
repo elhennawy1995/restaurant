@@ -182,8 +182,8 @@
 
 <div class="form-actions">
     <div class="row">
-        <div class=" col-md-9">
-            <button type="submit" class="btn btn-lg btn-circle green">Save</button>
+        <div class="col-md-offset-5 col-md-9">
+            <button type="submit" class="btn btn-circle green-turquoise">Save</button>
         </div>
     </div>
 </div>

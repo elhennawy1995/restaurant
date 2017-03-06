@@ -32,14 +32,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link nav-toggle font-blue-oleo">
-                                    <i class="fa fa-cubes"></i>
-                                    <span class="title">
-                                        Inventory
-                                    </span>
-                                </a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a href="/shopping-cart" class="nav-link nav-toggle font-blue-oleo">
                                     <i class="fa fa-shopping-cart"></i>

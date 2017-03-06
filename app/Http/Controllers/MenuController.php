@@ -148,7 +148,7 @@ class MenuController extends Controller
         }
         foreach ($item->meal_types as $type) {
             $item_meal_types [] = $type->id;
-        }
+        }//dd($item);
         return view('menu.edit')->with('edit_item',$item)
                                 ->with('items',$items)
                                 ->with('sides',$sides)
@@ -241,9 +241,10 @@ class MenuController extends Controller
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
         if ($restaurant) 
         {
-            $items = $restaurant->items()->with('ingredients')->with('meal_types')->get();
+            $items = $restaurant->items()->with('ingredients')->with('meal_types')->with('photo')->get();
             $ingredients = $restaurant->ingredients()->with('inventory_item')->get()->toArray();
             $ingredients_sum = [];
+            $items_copy = [];
             foreach ($ingredients as $ingredient) 
             {
                 $ingredients_sum [$ingredient['inventory_item_id']] = 0;
@@ -282,7 +283,7 @@ class MenuController extends Controller
 
             $items = $items->toArray();
             // dd($items);
-            $items_copy = [];
+            
             foreach($items as $key=>$item)
             {   $items_copy [$key] = $item;
                 foreach($item['ingredients'] as $ingredient)
@@ -297,9 +298,6 @@ class MenuController extends Controller
             }
 
         }
-        // dd($items_copy);
-        // $items_copy = $items;
-        // dd($items_copy);
         $result = array();
         foreach ($items_copy as $item) {
             foreach ($item['meal_types'] as $type) 

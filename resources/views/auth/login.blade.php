@@ -39,8 +39,12 @@
     <body class=" login">
         <!-- BEGIN LOGO -->
         <div class="logo">
-            <a href="index.html">
-                <img src="/pages/img/logo-big.png" alt="" /> </a>
+            <!-- <a href="index.html">
+                <img src="/pages/img/logo-big.png" alt="" /> </a> -->
+                <p style="
+                font-size: 28px;
+                color: white;
+            "> RESTURANTS HUB </p>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
@@ -69,7 +73,7 @@
                     </label>
                     <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
                 </div>
-                <div class="login-options">
+                <!-- <div class="login-options">
                     <h4>Or login with</h4>
                     <ul class="social-icons">
                         <li>
@@ -85,7 +89,7 @@
                             <a class="social-icon-color linkedin" data-original-title="Linkedin" href="javascript:;"></a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="create-account">
                     <p>
                         <a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>
@@ -137,7 +141,7 @@
             </form>
             <!-- END REGISTRATION FORM -->
         </div>
-        <div class="copyright"> 2014 © Metronic. Admin Dashboard Template. </div>
+        <div class="copyright"> <!-- 2014 © Metronic. Admin Dashboard Template. --> </div>
         <!--[if lt IE 9]>
 <script src="/global/plugins/respond.min.js"></script>
 <script src="/global/plugins/excanvas.min.js"></script> 
