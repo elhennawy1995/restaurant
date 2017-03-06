@@ -11,7 +11,7 @@ class InventoryCategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-       App\Category::insert(
+       App\InventoryCategory::insert(
         [
             ['name'=>'Main course'],
             ['name'=>'Drink'],
