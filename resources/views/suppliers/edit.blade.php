@@ -63,29 +63,31 @@
             <textarea class="form-control spinner" name="description">{{$edit_supplier->description}}</textarea>
         </div>
     </div>
-    <h4 class="font-blue-ebonyclay"> Items</h4>
-    <div class="col-md-9">
-        <select multiple="multiple" class="multi-select" id="supplier_items_multi_select" name="supplier_items[]">
-        @if($items)
-        @foreach($items as $item)
-            <option value="{{$item->id}}" 
-            @if(in_array($item->id, $supplier_items))
-            selected
+    <div class="form-group">
+        <h4 class="font-blue-ebonyclay"> Items</h4>
+        <div class="col-md-9">
+            <select multiple="multiple" class="multi-select" id="supplier_items_multi_select" name="supplier_items[]">
+            @if($items)
+            @foreach($items as $item)
+                <option value="{{$item->id}}" 
+                @if(in_array($item->id, $supplier_items))
+                selected
+                @endif
+                >
+                {{$item->name}} </option>
+            @endforeach
             @endif
-            >
-            {{$item->name}} </option>
-        @endforeach
-        @endif
-        </select>
+            </select>
+        </div>
     </div>
 
 
      
 </div>
 
-<div class="form-actions">
+<div class="form-actions" style="margin-top: 18px;">
     <div class="row">
-        <div class="col-md-offset-5 col-md-9">
+        <div class="col-md-offset-0 col-md-9">
             <button type="submit" class="btn btn-circle green-turquoise">Save</button>
         </div>
     </div>

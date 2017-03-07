@@ -112,8 +112,8 @@
 	                </div>
                     <a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
                         <i class="fa fa-plus"></i> Add</a>
-                   <div class="row">
-                        <div class="col-md-offset-5 col-md-9">
+                   <div class="row" style="margin-top: 18px;">
+                        <div class="col-md-offset-0 col-md-9">
                             <button type="submit" class="btn btn-circle green-turquoise">Save</button>
                         </div>
 

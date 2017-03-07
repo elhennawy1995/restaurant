@@ -180,9 +180,9 @@
      
 </div>
 
-<div class="form-actions">
+<div class="form-actions" style="margin-top: 62px;">
     <div class="row">
-        <div class="col-md-offset-5 col-md-9">
+        <div class="col-md-offset-0 col-md-9">
             <button type="submit" class="btn btn-circle green-turquoise">Save</button>
         </div>
     </div>
