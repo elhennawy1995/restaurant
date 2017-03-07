@@ -242,6 +242,7 @@ class MenuController extends Controller
     {   
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
         $items_copy = [];
+        $percentage = [];
         if ($restaurant) 
         {
             $items = $restaurant->items()->with('ingredients')->with('meal_types')->with('photo')->get();
