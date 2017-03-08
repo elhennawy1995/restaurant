@@ -107,7 +107,7 @@ class UsersController extends Controller
         
         if(User::find($id))
         {
-            User::find($id)->restaurant()->delete();
+            User::find($id)->restaurant()->detach();
             User::find($id)->delete();
             return response('Deleted.',200);
         }
