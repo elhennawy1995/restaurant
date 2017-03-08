@@ -26,7 +26,7 @@
     <h4 class="font-blue-ebonyclay"> Email</h4>
     <div class="form-group">
         <div class="col-md-6">
-            <textarea class="form-control spinner" name="email"> {{$user->email}}</textarea>
+            <input type="text" class="form-control spinner" name="email" value="{{$user->email}}">
         </div>
     </div>    
     <label>Profile Picture</label>
