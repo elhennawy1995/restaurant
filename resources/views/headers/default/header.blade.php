@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <!-- END LOGO -->
-
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
                 <!-- BEGIN PAGE TOP -->
                 <div class="page-top">
                     <div class="page-actions">
@@ -65,9 +65,16 @@
                             <!-- BEGIN USER LOGIN DROPDOWN -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-user">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <img alt="" class="img-circle" src="/layouts/admin2/img/avatar3_small.jpg" />
-                                    <span class="username username-hide-on-mobile"> {{(Auth::user()->email)}} </span>
+                                <a href="/profile" class="dropdown-toggle" >
+                                    <img alt="" class="img-circle" src="/layouts/admin2/img/avatar.png" />
+                                    <span class="username username-hide-on-mobile"> 
+                                    @if(!empty(Auth::user()->username))
+                                    {{
+                                    Auth::user()->username}} 
+                                    @else
+                                    {{Auth::user()->email}}
+                                    @endif
+                                    </span>
                                     <!-- <i class="fa fa-angle-down"></i> -->
                                 </a>
                             </li>

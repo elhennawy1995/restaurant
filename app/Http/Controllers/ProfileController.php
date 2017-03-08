@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -13,7 +15,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.index');
+        $user = User::find(Auth::user()->id);
+        return view('profile.index')->with('user',$user);
     }
 
     /**
@@ -56,7 +59,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find(Auth::user()->id);
+        return view('profile.edit')->with('user',$user);
     }
 
     /**
@@ -68,7 +72,21 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        if(User::find($id)->update($request->all()))
+        {
+            if ($request->hasFile('photo')) 
+            {
+                if ($request->file('photo')->isValid())
+                {
+                    if($path = $request->photo->store('uploads/profile','public') )
+                    {
+                       User::where('id',$id)->update(['photo'=>$path]);
+                    }
+                }
+            }     
+        }
+        return redirect()->back();
     }
 
     /**
