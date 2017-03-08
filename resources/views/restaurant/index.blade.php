@@ -181,6 +181,7 @@
                        Invitation is {{$invited->status}}
                     </td>
                     @endif
+                    <td></td>
                 </tr>
                 @endif
             @endforeach
