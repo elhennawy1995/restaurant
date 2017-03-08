@@ -66,7 +66,13 @@
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                             <li class="dropdown dropdown-user">
                                 <a href="/profile" class="dropdown-toggle" >
-                                    <img alt="" class="img-circle" src="/layouts/admin2/img/avatar.png" />
+                                    <img alt="" class="img-circle" src="
+                                    @if(!empty(Auth::user()->photo))
+                                    {{asset(Auth::user()->photo)}}
+                                    @else
+                                    /layouts/admin2/img/avatar.png
+                                    @endif
+                                    " />
                                     <span class="username username-hide-on-mobile"> 
                                     @if(!empty(Auth::user()->username))
                                     {{
