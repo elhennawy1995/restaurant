@@ -58,9 +58,12 @@ var UserDatatablesEditable = function () {
                 error:function(data){
                     var msg = JSON.parse(data.responseText);
                     alert(msg.email[0]);
-                    oTable.fnDeleteRow(nEditing); // cancel
-                    nEditing = null;
-                    nNew = false;(oTable, nRow);
+                    // console.log();
+                    oTable.fnDeleteRow(nRow); // cancel
+                    // nEditing = null;
+                    // nNew = false;(oTable, nRow);
+                    // $('input .cancel').trigger('click');
+                    // $('.cancel').trigger('click');
                 }
             });
             

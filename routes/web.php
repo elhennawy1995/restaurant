@@ -15,6 +15,8 @@ Auth::routes();
 Route::get('/logout',"Auth\LoginController@logout");
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
+Route::get('/invitations/{ref_code}','InvitationsController@index');
+Route::post('/invitations/register','InvitationsController@store');
 
 Route::group(['middleware'=>['auth','web']],function (){
 

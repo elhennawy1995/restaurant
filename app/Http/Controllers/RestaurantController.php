@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cuisine;
 use App\Http\Requests\BasicInfoRequest;
+use App\Invitation;
 use App\Restaurant;
 use App\RestaurantCuisines;
 use App\User;
@@ -19,7 +20,7 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
         if($restaurant)
         {
@@ -31,12 +32,14 @@ class RestaurantController extends Controller
             }
             $branches = Restaurant::find($restaurant->id)->branches()->get();
             $users = Restaurant::find($restaurant->id)->user()->get();
+            $invited_users = Invitation::where('user_id',Auth::user()->id)->get();
         }
         else
         {
             $branches=[];
             $users=[];
             $restaurant_cuisines=[];
+            $invited_users = [];
         }
         $cuisines = Cuisine::all();
         return view('restaurant.index')
@@ -44,6 +47,7 @@ class RestaurantController extends Controller
                 ->with('branches',$branches)
                 ->with('cuisines',$cuisines)
                 ->with('users',$users)
+                ->with('invited_users',$invited_users)
                 ->with('restaurant_cuisines',$restaurant_cuisines);
         
     }

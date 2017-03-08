@@ -24,7 +24,7 @@ class NewUserToRestaurantRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
+            // 'name'=>'required',
             'email' => 'required|email|max:255|unique:users',
         ];
     }

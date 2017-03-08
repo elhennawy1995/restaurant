@@ -170,6 +170,21 @@
                 @endif
             @endforeach
             @endif
+            @if($users)
+            @foreach($invited_users as $invited)
+                @if(!($invited->id == auth::user()->id))
+                <tr id="{{$user->id}}">
+                    <td> {{$invited->name}} </td>
+                    <td> {{$invited->email}} </td>
+                    @if($invited->status != 'successful')
+                    <td>
+                       Invitation is {{$invited->status}}
+                    </td>
+                    @endif
+                </tr>
+                @endif
+            @endforeach
+            @endif
             </tbody>
         </table>
 	</div>
