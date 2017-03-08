@@ -103,9 +103,12 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-         if(User::find($id)->delete())
+    {   
+        
+        if(User::find($id))
         {
+            User::find($id)->restaurant()->delete();
+            User::find($id)->delete();
             return response('Deleted.',200);
         }
         return response('error',400);
