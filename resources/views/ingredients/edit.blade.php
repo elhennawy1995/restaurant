@@ -22,7 +22,7 @@
             <tr id="{{ $item->id }}">
                 <td>{{ $item->name }} </td>
                 <td>
-                    <a href="/ingredients/item/{{$item->id}}/edit" class="edit"> Edit </a>
+                    <a href="/ingredients/{{$item->id}}/edit" class="edit"> Edit </a>
                 </td>
             </tr>
         @endforeach
@@ -111,7 +111,7 @@
                             <select class="form-control" name="unit_id">
                                 @if($units)
                                 @foreach($units as $unit)
-                                    <option value="{{$unit->id}}">{{$unit->name}}</option>
+                                    <option value="{{$unit->id}}" required>{{$unit->name}}</option>
                                 @endforeach
                                 @endif
                             </select>
