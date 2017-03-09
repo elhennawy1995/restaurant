@@ -47,7 +47,7 @@ var UserDatatablesEditable = function () {
                 url:'/user',
                 data: formData,
                 success:function(data){
-                    console.log(data);
+                    alert(data);
                     var jqInputs = $('input', nRow);
                     oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
                     oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);

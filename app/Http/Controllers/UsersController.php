@@ -54,7 +54,7 @@ class UsersController extends Controller
         $url = asset("/invitations/$ref_code");
         $invitation = new userInvitation($url);
         if(\Mail::to($request->email)->send($invitation));
-            return response('Invited',200);
+            return response('An invitation has been sent',200);
         return response('Error',400);
     }
 

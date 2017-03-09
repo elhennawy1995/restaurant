@@ -180,6 +180,8 @@
                     <td>
                        Invitation is {{$invited->status}}
                     </td>
+                    @else
+                    <td></td>
                     @endif
                     <td></td>
                 </tr>
