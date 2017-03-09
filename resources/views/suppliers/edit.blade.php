@@ -47,14 +47,14 @@
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="name"
-            value="{{$edit_supplier->name}}"> 
+            value="{{$edit_supplier->name}}" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Address</h4>
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="address"
-            value="{{$edit_supplier->address}}"> 
+            value="{{$edit_supplier->address}}" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Description</h4>

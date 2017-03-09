@@ -48,22 +48,22 @@
     <h4 class="font-blue-ebonyclay">Name </h4>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="name"> 
+            <input type="text" class="form-control spinner" name="name" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Description</h4>
     <div class="form-group">
         <div class="col-md-6">
-            <textarea class="form-control spinner" name="description"> </textarea>
+            <textarea class="form-control spinner" name="description"></textarea>
         </div>
     </div>  
     <h4 class="font-blue-ebonyclay">Storage size(dimensions)</h4>
     <div class="form-inline" >
         <div class="form-group col-md-12">
-            <input type="text" class="form-control" name="length" placeholder="Length"> 
-            <input type="text" class="form-control" name="width" placeholder="Width"> 
-            <input type="text" class="form-control" name="height" placeholder="Height">
-            <select class="bs-select form-control col-md-4" name="unit_id">
+            <input type="text" class="form-control" name="length" placeholder="Length" required=""> 
+            <input type="text" class="form-control" name="width" placeholder="Width" required=""> 
+            <input type="text" class="form-control" name="height" placeholder="Height" required="">
+            <select class="bs-select form-control col-md-4" name="unit_id" required="">
                 <option></option>
                 @if($units)
                 @foreach($units as $unit)
@@ -78,7 +78,7 @@
     <div class="form-inline col-md-8" >
         <div class="form-group">
             <input type="text" class="form-control"  
-            name="shelfs" placeholder="0"> 
+            name="shelfs" placeholder="0" required=""> 
         </div>
     </div>
     <div class="form-group"></div>
@@ -86,7 +86,7 @@
     <div class="form-inline col-md-8" >
         <div class="form-group">
             <input type="text" class="form-control"  
-            name="max_capacity" placeholder="0"> 
+            name="max_capacity" placeholder="0" required=""> 
         </div>
     </div>
     <div class="form-group"></div>

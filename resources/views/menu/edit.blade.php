@@ -55,13 +55,13 @@
     <h4 class="font-blue-ebonyclay"> Item name</h4>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="name" value="{{$edit_item->name}}"> 
+            <input type="text" class="form-control spinner" name="name" value="{{$edit_item->name}}" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Price</h4>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="price" value="{{$edit_item->price}}"> 
+            <input type="text" class="form-control spinner" name="price" value="{{$edit_item->price}}" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Description</h4>

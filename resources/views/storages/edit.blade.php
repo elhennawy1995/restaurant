@@ -50,7 +50,7 @@
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="name"
-            value="{{$selected_storage->name}}"> 
+            value="{{$selected_storage->name}}" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Description</h4>
@@ -63,12 +63,12 @@
     <div class="form-inline" >
         <div class="form-group col-md-12">
             <input type="text" class="form-control" name="length" placeholder="Length"
-            value="{{$selected_storage->length}}"> 
+            value="{{$selected_storage->length}}" required=""> 
             <input type="text" class="form-control" name="width" placeholder="Width"
-            value="{{$selected_storage->width}}"> 
+            value="{{$selected_storage->width}}" required=""> 
             <input type="text" class="form-control" name="height" placeholder="Height"
-            value="{{$selected_storage->height}}">
-            <select class="bs-select form-control col-md-4" name="unit_id">
+            value="{{$selected_storage->height}}" required="">
+            <select class="bs-select form-control col-md-4" name="unit_id" required="">
                 <option></option>
                 @if($units)
                 @foreach($units as $unit)
@@ -88,7 +88,7 @@
         <div class="form-group">
             <input type="text" class="form-control"  
             name="shelfs" placeholder="0"
-            value="{{$selected_storage->shelfs}}"> 
+            value="{{$selected_storage->shelfs}}" required=""> 
         </div>
     </div>
     <div class="form-group"></div>
@@ -97,7 +97,7 @@
         <div class="form-group">
             <input type="text" class="form-control"  
             name="max_capacity" placeholder="0"
-            value="{{$selected_storage->max_capacity}}"> 
+            value="{{$selected_storage->max_capacity}}" required=""> 
         </div>
     </div>
     <div class="form-group"></div>

@@ -51,7 +51,7 @@
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="name"
-            value="{{$edit_item->name}}"> 
+            value="{{$edit_item->name}}" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Description</h4>
@@ -64,7 +64,7 @@
     <h4 class="font-blue-ebonyclay"> Category</h4>
     <div class="form-group">
         <div class="col-md-4">
-            <select class="bs-select form-control" name='category_id'>
+            <select class="bs-select form-control" name='category_id' required="">
             <option></option>
             @if($categories)
             @foreach($categories as $category)
@@ -81,7 +81,7 @@
     <h4 class="font-blue-ebonyclay"> Purchase Unit (PU)</h4>
     <div class="form-group">
         <div class="col-md-4">
-            <select class="bs-select form-control" name="purchase_unit_id">
+            <select class="bs-select form-control" name="purchase_unit_id" required="">
                 <option></option>
                 @if($purchase_units)
                 @foreach($purchase_units as $unit)
@@ -99,20 +99,20 @@
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="pu_count"
-            value="{{$edit_item->pu_count}}">
+            value="{{$edit_item->pu_count}}" required="">
         </div>
     </div>
     <h4>Purchase Unit Price (PUP)</h4>
     <div class="form-group">
         <div class="col-md-4">
             <input type="text" class="form-control spinner" name="pu_price"
-            value="{{$edit_item->pu_price}}">
+            value="{{$edit_item->pu_price}}" required="">
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Inventory Count Unit (CU)</h4>
     <div class="form-group">
         <div class="col-md-4">
-            <select class="bs-select form-control" name="count_unit_id">
+            <select class="bs-select form-control" name="count_unit_id" required="">
                 <option></option>
                 @if($count_units)
                 @foreach($count_units as $unit)
@@ -130,19 +130,19 @@
     <div class="form-group">
         <div class="col-md-4">
             <input type="number" class="form-control spinner" name="number_of_cu_per_pu"
-            value="{{$edit_item->number_of_cu_per_pu }}">
+            value="{{$edit_item->number_of_cu_per_pu }}" required="">
         </div>
     </div>  
     <h4 class="font-blue-ebonyclay">Inventory Count Unit size(dimensions)</h4>
     <div class="form-inline" >
         <div class="form-group col-md-12">
             <input type="text" class="form-control" name="cu_length" placeholder="Length"
-            value="{{$edit_item->cu_length}}"> 
+            value="{{$edit_item->cu_length}}" required=""> 
             <input type="text" class="form-control" name="cu_width" placeholder="Width"
-            value="{{$edit_item->cu_width}}"> 
+            value="{{$edit_item->cu_width}}" required=""> 
             <input type="text" class="form-control" name="cu_height" placeholder="Height"
-            value="{{$edit_item->cu_height}}">
-            <select class="bs-select form-control col-md-4" name="cu_size_unit_id">
+            value="{{$edit_item->cu_height}}" required="">
+            <select class="bs-select form-control col-md-4" name="cu_size_unit_id" required="">
                 <option></option>
                 @if($units)
                 @foreach($units as $unit)
@@ -162,8 +162,8 @@
         <div class="form-group">
             <input type="text" class="form-control" id="ersl" 
             name="remaining_shelf_life" placeholder="0" 
-            value=" {{$edit_item->remaining_shelf_life}}"> 
-            <select class="bs-select form-control col-md-4" name="remaining_shelf_life_unit_id">
+            value=" {{$edit_item->remaining_shelf_life}}" required=""> 
+            <select class="bs-select form-control col-md-4" name="remaining_shelf_life_unit_id" required="">
                 <option></option>
                 @if($time_units)
                 @foreach($time_units as $unit)

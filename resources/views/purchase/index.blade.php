@@ -31,7 +31,7 @@
                  @if($budget && $budget->max_budget)
                     value={{$budget->max_budget}}
                  @endif
-                >
+                required="" >
 		    </div>
             <input type="submit" name="submit" value="Save" class="btn btn-circle green-turquoise">
 		</div>
@@ -83,7 +83,7 @@
                                 </label>
                             </div>
                             <div class="mt-repeater-input  ">
-	                            	<select class="form-control form-control-inline" name="supplier_id">
+	                            	<select class="form-control form-control-inline" name="supplier_id" required="">
 	                            		<option></option>
                                         @if($suppliers)
                                         @foreach($suppliers as $supplier)
@@ -93,10 +93,10 @@
 	                            	</select>
                             </div>
                             <div class="mt-repeater-input ">
-                                <input type="number" name="period" class="form-control form-control-inline" /> 
+                                <input type="number" name="period" class="form-control form-control-inline" required="" /> 
                             </div>
                             <div class="mt-repeater-input  ">
-	                            	<select class="form-control form-control-inline" name="unit_id">
+	                            	<select class="form-control form-control-inline" name="unit_id" required="">
                                     @if($units)
                                     @foreach($units as $unit)
 	                            		<option value="{{$unit->id}}">{{$unit->name}}</option>

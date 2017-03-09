@@ -46,19 +46,19 @@
     <h4 class="font-blue-ebonyclay"> Name</h4>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="name"> 
+            <input type="text" class="form-control spinner" name="name" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Address</h4>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="address"> 
+            <input type="text" class="form-control spinner" name="address" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Description</h4>
     <div class="form-group">
         <div class="col-md-6">
-            <textarea class="form-control spinner" name="description"> </textarea>
+            <textarea class="form-control spinner" name="description"></textarea>
         </div>
     </div>
     <div class="form-group">

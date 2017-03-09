@@ -57,13 +57,13 @@
     <h4 class="font-blue-ebonyclay"> Item name</h4>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="name"> 
+            <input type="text" class="form-control spinner" name="name" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Price</h4>
     <div class="form-group">
         <div class="col-md-4">
-            <input type="text" class="form-control spinner" name="price"> 
+            <input type="text" class="form-control spinner" name="price" required=""> 
         </div>
     </div>
     <h4 class="font-blue-ebonyclay"> Description</h4>

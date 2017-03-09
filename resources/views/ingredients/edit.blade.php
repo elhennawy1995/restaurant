@@ -90,7 +90,7 @@
                            <div class="form-group">
                                     <div class="">
                                         <select class=" form-control" 
-                                        name="inventory_item_id">
+                                        name="inventory_item_id" required="">
                                         @if($inventory_items)
                                             <optgroup label="inventory">
                                                 @foreach($inventory_items as $inventory_item)
@@ -105,10 +105,10 @@
                                 </div>
                     </div>
                     <div class="mt-repeater-input ">
-                        <input type="number" name="amount" class="form-control form-control-inline col-md-4" value="" placeholder="Amount" /> 
+                        <input type="number" name="amount" class="form-control form-control-inline col-md-4" value="" placeholder="Amount" required="" /> 
                     </div>
                     <div class="mt-repeater-input  ">
-                            <select class="form-control" name="unit_id">
+                            <select class="form-control" name="unit_id" required="">
                                 @if($units)
                                 @foreach($units as $unit)
                                     <option value="{{$unit->id}}" required>{{$unit->name}}</option>
