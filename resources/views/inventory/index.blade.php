@@ -26,7 +26,7 @@
             <tr id={{$item->id }}>
                 <td> {{$item->name }}</td>
                 <td>  {{$item->pu_count }} {{$item->purchase_unit->first()->name}} </td>
-                <td> {{$item->category->first()->name}} </td>
+                <td> {{$item->category->name}} </td>
                 <td> $ {{$item->pu_count * $item->pu_price}} </td>
                 <td>
                     <a href="/inventory/{{$item->id}}/edit" class="edit btn btn-circle green-turquoise" href="javascript:;"> Edit </a>
