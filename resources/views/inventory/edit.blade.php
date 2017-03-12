@@ -29,10 +29,10 @@
                 <td> {{$item->category->name}} </td>
                 <td> $ {{$item->pu_count * $item->pu_price}} </td>
                 <td>
-                    <a href="/inventory/{{$item->id}}/edit" class="edit" href="javascript:;"> Edit </a>
+                    <a href="/inventory/{{$item->id}}/edit" class="edit btn btn-circle green-turquoise" href="javascript:;"> Edit </a>
                 </td>
                 <td>
-                    <a class="delete" href="javascript:;"> Delet </a>
+                    <a class="delete btn btn-circle green-turquoise" href="javascript:;"> Delet </a>
                 </td>
             </tr>
             @endforeach

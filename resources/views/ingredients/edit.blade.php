@@ -22,7 +22,7 @@
             <tr id="{{ $item->id }}">
                 <td>{{ $item->name }} </td>
                 <td>
-                    <a href="/ingredients/{{$item->id}}/edit" class="edit"> Edit </a>
+                    <a href="/ingredients/{{$item->id}}/edit" class="edit btn btn-circle green-turquoise"> Edit Ingredients</a>
                 </td>
             </tr>
         @endforeach
@@ -63,7 +63,7 @@
                     <td> {{$ingredient->amount}} </td>
                     <td> {{$ingredient->count_unit->name}} </td>
                     <td>
-                        <a class="delete" href="javascript:;"> Delete </a>
+                        <a class="delete btn btn-circle green-turquoise" href="javascript:;"> Delete </a>
                     </td>
                 </tr>
                 @endforeach

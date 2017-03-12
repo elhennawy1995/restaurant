@@ -25,10 +25,10 @@
                 <td> {{$supplier->address}} </td>
                 <td> {{$supplier->description}} </td>
                 <td>
-                    <a href="/suppliers/{{$supplier->id}}/edit" class="edit" href="javascript:;"> Edit </a>
+                    <a href="/suppliers/{{$supplier->id}}/edit" class="edit btn btn-circle green-turquoise" href="javascript:;"> Edit </a>
                 </td>
                 <td>
-                    <a class="delete" href="javascript:;"> Delete </a>
+                    <a class="delete btn btn-circle green-turquoise" href="javascript:;"> Delete </a>
                 </td>
             </tr>
         @endforeach

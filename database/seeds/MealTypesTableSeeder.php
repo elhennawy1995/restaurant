@@ -14,7 +14,7 @@ class MealTypesTableSeeder extends Seeder
        App\MealType::insert(
         [
             ['name'=>'Breakfast'],
-            ['name'=>'Brunsh'],
+            ['name'=>'Brunch'],
             ['name'=>'Lunch'],
             ['name'=>'Dinner'],
         ]

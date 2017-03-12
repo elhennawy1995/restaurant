@@ -137,6 +137,7 @@ class MenuController extends Controller
         $item_sides = [];
         $item_categories = [];
         $item_disposables = [];
+        $item_meal_types = [];
         foreach ($item->sides as $side) {
             $item_sides [] = $side->id;
         }
@@ -149,7 +150,8 @@ class MenuController extends Controller
         foreach ($item->meal_types as $type) {
             $item_meal_types [] = $type->id;
         }//dd($item);
-        return view('menu.edit')->with('edit_item',$item)
+        return view('menu.edit')->with('restaurant',$restaurant)
+                                ->with('edit_item',$item)
                                 ->with('items',$items)
                                 ->with('sides',$sides)
                                 ->with('disposables',$disposables)

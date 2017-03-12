@@ -24,13 +24,13 @@
         @foreach($storages as $storage)
             <tr id="{{$storage->id}}">
                 <td> {{$storage->name }}</td>
-                <td>  {{$storage->length * $storage->width * $storage->height }} {{$storage->unit->name }} </td>
+                <td>  {{$storage->length * $storage->width * $storage->height }} {{$storage->unit->name }}<sup>3</sup> </td>
                 <td> {{$storage->shelfs }} </td>
                 <td>
-                    <a href="/storages/{{$storage->id}}/edit" class="edit" href="javascript:;"> Edit </a>
+                    <a href="/storages/{{$storage->id}}/edit" class="edit btn btn-circle green-turquoise" href="javascript:;"> Edit </a>
                 </td>
                 <td>
-                    <a class="delete" href="javascript:;"> Delete </a>
+                    <a class="delete btn btn-circle green-turquoise" href="javascript:;"> Delete </a>
                 </td>
             </tr>
             @endforeach

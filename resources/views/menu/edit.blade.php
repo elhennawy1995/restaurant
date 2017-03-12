@@ -33,10 +33,10 @@
                 @endforeach 
                 </td>
                 <td>
-                    <a href="/menu/{{$item->id}}/edit" class="edit" href="javascript:;"> Edit </a>
+                    <a href="/menu/{{$item->id}}/edit" class="edit btn btn-circle green-turquoise" href="javascript:;"> Edit </a>
                 </td>
                 <td>
-                    <a class="delete" href="javascript:;"> Delete </a>
+                    <a class="delete btn btn-circle green-turquoise" href="javascript:;"> Delete </a>
                 </td>
             </tr>
             @endforeach
@@ -124,6 +124,11 @@
 		<div class="mt-checkbox-inline">
 		@if($meal_types)
         @foreach($meal_types as $type)
+             @if( ($type->name == 'Lunch'&&$restaurant->lunch == 1)  || 
+            ($type->name == 'Breakfast'&& $restaurant->breakfast == 1) ||
+            ($type->name == 'Brunch'&&$restaurant->brunch == 1) ||
+            ($type->name == 'Dinner'&&$restaurant->dinner == 1)
+            )
             <label class="mt-checkbox mt-checkbox-outline">
                 <input type="checkbox" name="meal_types[]" value="{{$type->id}}" 
                 @if(in_array($type->id, $item_meal_types))
@@ -132,6 +137,7 @@
                 /> {{$type->name}}
                 <span></span>
             </label>
+            @endif
         @endforeach
         @endif
 

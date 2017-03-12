@@ -22,7 +22,7 @@
             <tr id="{{ $item->id }}">
                 <td>{{ $item->name }} </td>
                 <td>
-                    <a href="/ingredients/{{$item->id}}/edit" class="edit" > Edit Ingredients</a>
+                    <a href="/ingredients/{{$item->id}}/edit" class="edit btn btn-circle green-turquoise" > Edit Ingredients</a>
                 </td>
             </tr>
         @endforeach

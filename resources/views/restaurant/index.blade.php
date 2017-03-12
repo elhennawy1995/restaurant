@@ -52,10 +52,10 @@
                     <td> {{$branch->name}} </td>
                     <td> {{$branch->address}} </td>
                     <td>
-                        <a class="edit" href="javascript:;"> Edit </a>
+                        <a class="edit btn btn-circle green-turquoise" href="javascript:;"> Edit </a>
                     </td>
                     <td>
-                        <a class="delete" href="javascript:;"> Delete </a>
+                        <a class="delete btn btn-circle green-turquoise" href="javascript:;"> Delete </a>
                     </td>
                 </tr>
                 @endforeach
@@ -161,10 +161,10 @@
                     <td> {{$user->name}} </td>
                     <td> {{$user->email}} </td>
                     <td>
-                        <a class="edit" href="javascript:;"> Edit </a>
+                        <a class="edit btn btn-circle green-turquoise" href="javascript:;"> Edit </a>
                     </td>
                     <td>
-                        <a class="delete" href="javascript:;"> Delete </a>
+                        <a class="delete btn btn-circle green-turquoise" href="javascript:;"> Delete </a>
                     </td>
                 </tr>
                 @endif
@@ -173,18 +173,16 @@
             @if($users)
             @foreach($invited_users as $invited)
                 @if(!($invited->id == auth::user()->id))
-                <tr id="{{$user->id}}">
-                    <td> {{$invited->name}} </td>
-                    <td> {{$invited->email}} </td>
                     @if($invited->status != 'successful')
-                    <td>
-                       Invitation is {{$invited->status}}
-                    </td>
-                    @else
-                    <td></td>
+                        <tr id="{{$user->id}}">
+                            <td> {{$invited->name}} </td>
+                            <td> {{$invited->email}} </td>
+                            <td>
+                               Invitation is {{$invited->status}}
+                            </td>
+                            <td></td>
+                        </tr>
                     @endif
-                    <td></td>
-                </tr>
                 @endif
             @endforeach
             @endif
