@@ -17,18 +17,10 @@
                     <div class="page-actions">
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
-                                <a href="#" class="nav-link nav-toggle font-blue-oleo">
-                                    <i class="fa fa-dashboard"></i>
-                                    <span class="title">
-                                        Dashboard
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link nav-toggle font-blue-oleo">
+                                <a href="/" class="nav-link nav-toggle font-blue-oleo">
                                     <i class="fa fa-line-chart"></i>
                                     <span class="title">
-                                        Forecast
+                                        Statistics
                                     </span>
                                 </a>
                             </li>
