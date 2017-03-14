@@ -11,7 +11,7 @@
 </div>
 <div id="highchart_1" style="height:500px;"></div>
 <br>
-<h3>Top selling items</h3>
+<h3 class="col-md-offset-4">Top selling items</h3>
 <div class="row  col-md-4">
 	<select class="bs-select form-control" id="line_chart_time_filter" >
 		<option></option>
