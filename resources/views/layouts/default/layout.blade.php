@@ -150,7 +150,11 @@
             <script src="/js/purchase_restrictions.js" type="text/javascript"></script>
             <script src="/js/storages.js" type="text/javascript"></script>
             <!-- END AUTHER SCRIPTS -->
-
+             <script src="global/plugins/highcharts/js/highcharts.js" type="text/javascript"></script>
+            <script src="global/plugins/highcharts/js/highcharts-3d.js" type="text/javascript"></script>
+            <script src="global/plugins/highcharts/js/highcharts-more.js" type="text/javascript"></script>
+            <script src="js/highcharts.js" type="text/javascript">
+            </script>
     </body>
 
 </html>
