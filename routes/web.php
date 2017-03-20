@@ -33,6 +33,10 @@ Route::group(['middleware'=>['auth','web']],function (){
 	Route::resource('/purchase-restrictions','PurchaseRestrictionsController');
 	Route::resource('/supplier-purchase-period','SupplierPurchasePeriodController');
 	Route::resource('/shopping-cart','ShoppingCartController');
+	Route::resource('/sales/top-items','SalesController@top_items');
+	Route::resource('/sales/quick-stats','SalesController@quick_stats');
+	Route::resource('/sales/import-data','SalesController@import_data');
+	Route::resource('/sales/forecast','SalesController@forecast');
 
 });
 

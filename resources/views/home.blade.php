@@ -5,8 +5,8 @@
 	<div class="dashboard-stat2 ">
 		<select class="bs-select form-control" id="cards_time_filter" >
 			<option></option>
-		    <option value="weekly" selected="">Weekly</option>
-		    <option value="monthly">Monthly</option>
+		    <option value="weekly">Weekly</option>
+		    <option value="monthly" selected="">Monthly</option>
 		</select> 
 	</div>
 </div>
@@ -15,7 +15,7 @@
             <div class="display">
                 <div class="number">
                     <h3 class="font-green-sharp">
-                        <span data-counter="counterup" data-value="7800">7800</span>
+                        <span data-counter="counterup" data-value="" id="total_card_number">7800</span>
                         <small class="font-green-sharp">$</small>
                     </h3>
                     <small>TOTAL PROFIT</small>
@@ -31,10 +31,10 @@
             <div class="display">
                 <div class="number">
                     <h3 class="font-red-haze">
-                        <span data-counter="counterup" data-value="1349">1349</span>
+                        <span data-counter="counterup" data-value="" id="top_seller_number">1349</span>
                     </h3>
                     
-                    <small>Beef burger</small>
+                    <small id="top_seller_name">Beef burger</small>
                 </div>
                 <div class="icon">
                     <i class="icon-like"></i>
@@ -47,9 +47,9 @@
             <div class="display">
                 <div class="number">
                     <h3 class="font-blue-sharp">
-                        <span data-counter="counterup" data-value="12">12</span>
+                        <span data-counter="counterup" data-value="" id="lowest_seller_number">12</span>
                     </h3>
-                    <small>Salad</small>
+                    <small id="lowest_seller_name">Salad</small>
                 </div>
                 <div class="icon">
                     <i class="icon-dislike"></i>
@@ -64,7 +64,7 @@
 	<select class="bs-select form-control" id="line_chart_time_filter" >
 		<option></option>
 	    <option value="weekly">Weekly</option>
-	    <option value="monthly">Monthly</option>
+	    <option value="monthly" selected="">Monthly</option>
 	</select> 
 </div>
 <div id="highchart_1" style="height:500px;"></div>
@@ -74,7 +74,7 @@
 	<select class="bs-select form-control" id="line_chart_time_filter" >
 		<option></option>
 	    <option value="weekly">Weekly</option>
-	    <option value="monthly">Monthly</option>
+	    <option value="monthly" selected="">Monthly</option>
 	</select> 
 </div>
 <br>
