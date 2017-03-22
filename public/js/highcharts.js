@@ -1,29 +1,52 @@
-jQuery(document).ready(function() {
+function top_items(filter){
 
-
-    //top cards 
-    function top_cards()
-    {
-        $.ajax(
+   $.ajax(
             {
-                url:"sales/quick-stats",   
+                url: "sales/top-items?filter="+filter,
             }
-            ).done(function(data){
-                // console.log(data[0].total);
-                $('#lowest_seller_name').html(data[0].item_name);
-                $('#lowest_seller_number').html(Math.round(data[0].total));
-                $('#top_seller_name').html(data[1].item_name);
-                $('#top_seller_number').html(Math.round(data[1].total));
-                $('#total_card_number').html(Math.round(data[2].total));
-
+        )
+        .done(function( data ) {
+                $('#highchart_4').highcharts({
+                chart: {
+                    type: 'column',
+                    style: {
+                        fontFamily: 'Open Sans'
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+                xAxis: {
+                    title: {
+                        text: null
+                    },
+                    categories:data[1]
+                },
+                yAxis: {
+                    min:0,
+                    title: {
+                        text: null
+                    },
+                },
+                series: eval(JSON.parse(data[0]))
             });
+          });
     }
-    top_cards();
-  // HIGHCHARTS DEMOS
 
-  	// LINE CHART 1
+function sales_forecast(filter)
+{
+    // LINE CHART 1
     $.ajax({
-        url:'sales/forecast'
+        url:'sales/forecast?filter='+filter,
     }).done(function(data){
         console.log(data);
                 $('#highchart_1').highcharts({
@@ -41,8 +64,7 @@ jQuery(document).ready(function() {
             x: -20
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: data['categories']
                 ,
           plotLines: [{
             color: 'red', // Color value
@@ -73,60 +95,29 @@ jQuery(document).ready(function() {
         },
         series: [{
             name: 'Sales',
-            data: data
+            data: data['data']
         }]
     });
     });
+}
+function top_cards(filter)
+{
+    $.ajax(
+        {
+            url:"sales/quick-stats?filter="+filter,   
+        }
+        ).done(function(data){
+            // console.log(data[0].total);
+            $('#lowest_seller_name').html(data[0].item_name);
+            $('#lowest_seller_number').html(Math.round(data[0].total));
+            $('#top_seller_name').html(data[1].item_name);
+            $('#top_seller_number').html(Math.round(data[1].total));
+            $('#total_card_number').html(Math.round(data[2].total));
 
-
-
-
-
-
-
-    top_items_series = '';
-   $.ajax(
-            {
-                url: "sales/top-items",
-            }
-        )
-        .done(function( data ) {
-                $('#highchart_4').highcharts({
-                chart: {
-                    type: 'column',
-                    style: {
-                        fontFamily: 'Open Sans'
-                    }
-                },
-                title: {
-                    text: ''
-                },
-                subtitle: {
-                    text: ''
-                },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-                xAxis: {
-                    title: {
-                        text: null
-                    },
-                    categories:["Top 3 selling items"]
-                },
-                yAxis: {
-                    min:0,
-                    title: {
-                        text: null
-                    },
-                },
-                series: eval(JSON.parse(data))
-            });
-          });
-
-    
-
-
+        });
+}
+jQuery(document).ready(function() {
+    top_items("monthly");
+    sales_forecast("monthly");
+    top_cards("monthly");
 });
