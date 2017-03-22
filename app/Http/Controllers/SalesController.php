@@ -26,7 +26,7 @@ class SalesController extends Controller
             $end = "2017-01-31 23:59:59";
             $result = Sale::select(\DB::raw('item_name ,SUM(total) ,week(line_item_date) as week'))->whereBetween('line_item_date',[$start,$end])->groupBy('item_name','week')->get()->toArray();
             // dd($result);
-            $categories = ['week-1','week-2','week-3','week-4'];
+            $categories = ['week-1','week-2','week-3','week-4','week-5'];
             $values=[];
             $data = '[';
             foreach ($result as $item) {
