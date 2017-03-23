@@ -108,11 +108,11 @@
 <div class="row  col-md-4">
     <div class="mt-radio-inline">
         <label class="mt-radio">
-            <input type="radio" name="optionsRadios" id="monthly_pie_items_radio" value="monthly" checked="" onclick="pie_items('monthly');"> Monthly
+            <input type="radio" name="pie_radio" id="monthly_pie_items_radio" value="monthly" checked="" onclick="pie_items('monthly');"> Monthly
             <span></span>
         </label>
         <label class="mt-radio">
-            <input type="radio" name="optionsRadios" id="weekly_pie_items_radio" value="weekly"
+            <input type="radio" name="pie_radio" id="weekly_pie_items_radio" value="weekly"
             onclick="pie_items('weekly');"> Weekly
             <span></span>
         </label>
