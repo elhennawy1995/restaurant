@@ -48,7 +48,6 @@ function sales_forecast(filter)
     $.ajax({
         url:'sales/forecast?filter='+filter,
     }).done(function(data){
-        console.log(data);
                 $('#highchart_1').highcharts({
         chart : {
             style: {
@@ -116,8 +115,51 @@ function top_cards(filter)
 
         });
 }
+function pie_items(filter)
+{
+    $.ajax(
+        {
+            url:"sales/top-items-percentage?filter="+filter,   
+        }
+        ).done(function(data){
+                 $('#pie_chart').highcharts( {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: ""
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+    series: [{
+        name: '',
+        colorByPoint: true,
+        data: eval(JSON.parse(data))
+    }]
+});
+        });
+   
+}
 jQuery(document).ready(function() {
     top_items("monthly");
     sales_forecast("monthly");
     top_cards("monthly");
+    pie_items("monthly");
 });

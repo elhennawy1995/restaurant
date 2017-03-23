@@ -35,6 +35,7 @@ Route::group(['middleware'=>['auth','web']],function (){
 	Route::resource('/shopping-cart','ShoppingCartController');
 	Route::get('/sales/top-items/{filter?}','SalesController@top_items');
 	Route::get('/sales/quick-stats/{filter?}','SalesController@quick_stats');
+	Route::get('/sales/top-items-percentage/{filter?}','SalesController@top_items_percentage');
 	Route::get('/sales/import-data','SalesController@import_data');
 	Route::get('/sales/forecast/{filter?}','SalesController@forecast');
 

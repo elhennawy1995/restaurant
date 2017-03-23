@@ -75,6 +75,47 @@ class SalesController extends Controller
                 return [json_encode($data),$categories];
         }
     }
+    public function top_items_percentage()
+    {   
+        if(isset(request()->filter)&&request()->filter=="weekly")
+        {
+            // $start = Carbon::now()->startOfWeek();
+            // $start = $start->toDateTimeString();
+            // $end = Carbon::now()->endOfWeek();
+            // $end = $end->toDateTimeString();
+            $start = "2017-01-01 00:00:00";
+            $end = "2017-01-07 23:59:59";
+            $result = Sale::select(\DB::raw('item_name ,SUM(total) as total'))->whereBetween('line_item_date',[$start,$end])->groupBy('item_name')->get()->toArray();
+            $total = Sale::select(\DB::raw('SUM(total) as total'))->whereBetween('line_item_date',[$start,$end])->get()->first()->total;
+            $data = '[';
+            foreach ($result as $item) {
+                $data .="{name:'".$item['item_name']."',y:";
+                $data .= ($item['total']/$total)  * 100;  
+                $data.="}," ;
+            }
+            $data .="]";
+            
+            return json_encode($data);
+        }
+        else
+        {
+            // $start = new Carbon('first day of January');
+            // $start = $start->toDateTimeString();
+            // $end = new Carbon('last day of January');
+            // $end = $end->toDateTimeString();;
+            $result = Sale::select(\DB::raw('item_name ,SUM(total) as total'))->groupBy('item_name')->get()->toArray();
+            $total = Sale::select(\DB::raw('SUM(total) as total'))->get()->first()->total;
+            $data = '[';
+            foreach ($result as $item) {
+                $data .="{name:'".$item['item_name']."',y:";
+                $data .= ($item['total']/$total)  * 100;  
+                $data.="}," ;
+            }
+            $data .="]";
+
+            return json_encode($data);
+        }
+    }
     public function quick_stats()
     {
         if(isset(request()->filter)&&request()->filter=="weekly")

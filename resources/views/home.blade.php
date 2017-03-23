@@ -100,5 +100,24 @@
 </div>
 <br>
 <div id="highchart_4" style="height:500px;"></div>
-
+<br>
+<br>
+<br>
+<br>
+<h3 class="col-md-offset-4">Top selling items (percentage)</h3>
+<div class="row  col-md-4">
+    <div class="mt-radio-inline">
+        <label class="mt-radio">
+            <input type="radio" name="optionsRadios" id="monthly_pie_items_radio" value="monthly" checked="" onclick="pie_items('monthly');"> Monthly
+            <span></span>
+        </label>
+        <label class="mt-radio">
+            <input type="radio" name="optionsRadios" id="weekly_pie_items_radio" value="weekly"
+            onclick="pie_items('weekly');"> Weekly
+            <span></span>
+        </label>
+    </div>
+</div>
+<br>
+<div id="pie_chart" ></div>
 @endsection
