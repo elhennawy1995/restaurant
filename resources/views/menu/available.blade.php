@@ -18,7 +18,7 @@
                         <div class="dashboard-stat2 " style="background: #e7ecf1 !important;">
                             <div class="display" style="margin-bottom: 0px !important">
                                 <div class="row">
-                                    <div class="number col-md-offset-1">
+                                    <div class="number col-md-offset-0">
                                     <span style="color:red" >We are out.</span>
                                         <h3 class="font-green-sharp" style="margin-top: 17px">
                                             <span data-counter="counterup" data-value="
@@ -45,7 +45,7 @@
                         <div class="dashboard-stat2 " style="background: #e7ecf1 !important;">
                             <div class="display" style="margin-bottom: 0px !important">
                                 <div class="row">
-                                    <div class="number col-md-offset-1">
+                                    <div class="number col-md-offset-0">
                                         <h3 class="font-green-sharp" style="margin-top: 17px">
                                             <span data-counter="counterup" data-value="
                                             {{$item['price']}}">{{$item['price']}}</span>
