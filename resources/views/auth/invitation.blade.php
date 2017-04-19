@@ -5,7 +5,7 @@
 </head>
 <body>
 	<h1>Invitation</h1>
-	<a href="{{$url}}"> Accept your invitaion and register now!</a>
-
+	<p> Accept your invitaion and register!</p>
+	<a href="{{$url}}"> Click here now!</a>
 </body>
 </html>
