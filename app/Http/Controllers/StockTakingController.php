@@ -39,38 +39,51 @@ class StockTakingController extends Controller
                     foreach ($inventory as $used ) 
                     {
                         $amount [$used['inventory_item_id']] = $sold_item['count(item_name)'] * $used['amount'];
+
                         foreach ($inventory_items as $inventory_item) 
                         {
                             if($used['inventory_item_id']==$inventory_item['id'])
-                            $available[$used['inventory_item_id']] =
-                            ($inventory_item ['number_of_cu_per_pu']
-                            *  $inventory_item  ['pu_count'] - $amount[$used['inventory_item_id']] ) / $inventory_item ['number_of_cu_per_pu'] ;
-
+                            {
+                                $available[$used['inventory_item_id']] =
+                                ($inventory_item ['number_of_cu_per_pu']
+                                *  $inventory_item  ['pu_count'] - $amount[$used['inventory_item_id']] ) / $inventory_item ['number_of_cu_per_pu'] ;
+                                $v = InventoryItem::find($used['inventory_item_id']);
+                                if($available[$inventory_item['id']]<0)
+                                {
+                                    $v->pu_count = 0; 
+                                    $v->save();
+                                }
+                                else
+                                {
+                                    $v->pu_count = $available[$used['inventory_item_id']]; 
+                                    $v->save();
+                                }
+                            }
                             // print_r($inventory_item); 
                         }
                     }
                     // dd($available);
                 }        
             }
-            $inventory_items = $restaurant->inventory_items()->get();
+            // $inventory_items = $restaurant->inventory_items()->get();
         }
-        foreach ($available as $key => $value) 
-        {
-            if($value<0)
-            {
-                $v = InventoryItem::find($key);
-                $v->pu_count = 0; 
-                $v->save();
-            }
-            else
-            {
-                $v = InventoryItem::find($key);
-                $v->pu_count = $value; 
-                $v->save();
-            }
+        // foreach ($available as $key => $value) 
+        // {
+        //     if($value<0)
+        //     {
+        //         $v = InventoryItem::find($key);
+        //         $v->pu_count = 0; 
+        //         $v->save();
+        //     }
+        //     else
+        //     {
+        //         $v = InventoryItem::find($key);
+        //         $v->pu_count = $value; 
+        //         $v->save();
+        //     }
 
-        }
-            
+        // }
+        //  dd($available);   
     }
 
     public function index()
