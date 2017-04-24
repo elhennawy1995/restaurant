@@ -50,6 +50,10 @@
 
 
 <h2 class="font-blue-ebonyclay"> Add Item</h2>
+<div class="note note-warning">
+    <p> You can add sides and disposables prior to adding your items, or add it any time later then come back and attach it.
+    </p>
+</div>
 <form action="/menu" method="post" class="form-horizontal " id="add_menu_item" enctype="multipart/form-data" >
 {{csrf_field()}}
 <input type="hidden" name="restaurant_id" value="{{$restaurant->id}}">
@@ -83,9 +87,7 @@
             @endif
             </select>
         </div>
-        <a href="javascript:;" class="btn btn-icon-only default">
-            <i class="fa fa-plus white"></i>
-        </a>
+        
     </div>
     <h4 class="font-blue-ebonyclay">Related Disposables</h4>
      <div class="form-group">
@@ -98,9 +100,7 @@
             @endif
             </select>
         </div>
-        <a href="javascript:;" class="btn btn-icon-only default">
-            <i class="fa fa-plus white"></i>
-        </a>
+        
     </div>
     <h4 class="font-blue-ebonyclay"> Category</h4>
     <div class="form-group col-md-12">
@@ -113,9 +113,7 @@
             </label>
         @endforeach
         @endif
-        <a href="javascript:;" class="btn btn-icon-only default">
-            <i class="fa fa-plus white"></i>
-        </a>
+        
         </div>
         
     </div>
@@ -136,9 +134,7 @@
             @endif
         @endforeach
         @endif
-        <a href="javascript:;" class="btn btn-icon-only default">
-            <i class="fa fa-plus white"></i>
-        </a>
+        
 		</div>
 
 	</div>

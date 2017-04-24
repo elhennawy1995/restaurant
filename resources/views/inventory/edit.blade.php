@@ -77,9 +77,7 @@
             @endif
             </select>
         </div>
-        <a href="javascript:;" class="btn btn-icon-only default">
-                <i class="fa fa-plus white"></i>
-            </a>
+        
     </div>
     <h4 class="font-blue-ebonyclay"> Purchase Unit (PU)</h4>
     <div class="form-group">
@@ -97,9 +95,7 @@
                 @endif
             </select>
         </div>
-        <a href="javascript:;" class="btn btn-icon-only default">
-                <i class="fa fa-plus white"></i>
-            </a>
+        
     </div>
     <h4 class="font-blue-ebonyclay"> Purchase Unit Count</h4>
     <div class="form-group">
@@ -131,9 +127,7 @@
                 @endif
             </select>
         </div>
-        <a href="javascript:;" class="btn btn-icon-only default">
-                <i class="fa fa-plus white"></i>
-            </a>
+        
     </div>
     <h4>Number of Count Units per Purchase Unit (# of CU per PU)</h4>
     <div class="form-group">
@@ -163,9 +157,7 @@
                 @endforeach
                 @endif
             </select> 
-            <a href="javascript:;" class="btn btn-icon-only default">
-                <i class="fa fa-plus white"></i>
-            </a>
+            
         </div>
     </div>
     <div class="form-group"></div>

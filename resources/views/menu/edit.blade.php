@@ -85,9 +85,7 @@
             @endif
             </select>
         </div>
-        <a href="javascript:;" class="btn btn-icon-only default">
-            <i class="fa fa-plus white"></i>
-        </a>
+
     </div>
     <h4 class="font-blue-ebonyclay">Related Disposables</h4>
      <div class="form-group">
@@ -104,9 +102,7 @@
             @endif
             </select>
         </div>
-        <a href="javascript:;" class="btn btn-icon-only default">
-            <i class="fa fa-plus white"></i>
-        </a>
+
     </div>
     <h4 class="font-blue-ebonyclay"> Category</h4>
     <div class="form-group col-md-12">
@@ -123,9 +119,7 @@
             </label>
         @endforeach
         @endif
-        <a href="javascript:;" class="btn btn-icon-only default">
-            <i class="fa fa-plus white"></i>
-        </a>
+
         </div>
     </div>
 	<h4 class="font-blue-ebonyclay"> Meal type</h4>
@@ -150,9 +144,7 @@
         @endforeach
         @endif
 
-        <a href="javascript:;" class="btn btn-icon-only default">
-            <i class="fa fa-plus white"></i>
-        </a>
+
 
 		</div>
 	</div>
