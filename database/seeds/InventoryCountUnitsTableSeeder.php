@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UnitsTableSeeder extends Seeder
+class InventoryCountUnitsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,8 @@ class UnitsTableSeeder extends Seeder
      */
     public function run()
     {
-       App\Unit::insert(
+       App\InventoryCountUnit::insert(
         [
-            ['name'=>'inch'],
             ['name'=>'ounces (oz)'],
             ['name'=>'fluid ounces (fl oz)'],
             ['name'=>'gallon (gal)'],
