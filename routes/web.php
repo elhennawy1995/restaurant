@@ -27,6 +27,8 @@ Route::group(['middleware'=>['auth','web']],function (){
 	Route::resource('/menu','MenuController');
 	Route::get('/available-menu','MenuController@available');
 	Route::resource('/inventory','InventoryController');
+	Route::resource('/stocktaking','StockTakingController');
+	Route::resource('/dosales','StockTakingController@doSales');
 	Route::resource('/suppliers','SuppliersController');
 	Route::resource('/ingredients','IngredientsController');
 	Route::resource('/storages','StoragesController');
@@ -37,6 +39,7 @@ Route::group(['middleware'=>['auth','web']],function (){
 	Route::get('/sales/quick-stats/{filter?}','SalesController@quick_stats');
 	Route::get('/sales/top-items-percentage/{filter?}','SalesController@top_items_percentage');
 	Route::get('/sales/import-data','SalesController@import_data');
+	Route::get('/sales/check-sales-data','SalesController@check_sales_data');
 	Route::get('/sales/forecast/{filter?}','SalesController@forecast');
 
 });

@@ -61,8 +61,8 @@
             <textarea class="form-control spinner" name="description"></textarea>
         </div>
     </div>
+    <h4 class="font-blue-ebonyclay"> Items</h4>
     <div class="form-group">
-        <h4 class="font-blue-ebonyclay"> Items</h4>
         <div class="col-md-9">
             <select multiple="multiple" class="multi-select" id="supplier_items_multi_select" name="supplier_items[]">
             @if($items)

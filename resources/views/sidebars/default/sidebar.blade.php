@@ -103,6 +103,21 @@
                                 @endif
                             </a>
                         </li>
+
+                        <li class="nav-item 
+                            @if (Request::is('stocktaking') || Request::is('stocktaking/*'))
+                            active open
+                            @endif
+                        ">
+                            <a href="/stocktaking" class="nav-link nav-toggle">
+                                <i class="fa fa-battery-half"></i>
+                                <span class="title">Stock Level</span>
+                                 @if (Request::is('stocktaking') || Request::is('stocktaking/*'))
+                                <span class="selected"></span>
+                                @endif
+                            </a>
+                        </li>
+
                     </ul>
                     <!-- END SIDEBAR MENU -->
                 </div>

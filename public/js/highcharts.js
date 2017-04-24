@@ -158,8 +158,22 @@ function pie_items(filter)
    
 }
 jQuery(document).ready(function() {
-    top_items("monthly");
-    sales_forecast("monthly");
-    top_cards("monthly");
-    pie_items("monthly");
+    $.ajax(
+            {
+                url: "sales/check-sales-data",
+            }
+        )
+        .done(function( data ) {
+            if(data==1){
+                top_items("monthly");
+                sales_forecast("monthly");
+                top_cards("monthly");
+                pie_items("monthly");
+            }
+            else
+            {
+                $('.page-content').html("<h3>Uploade sales data</h3><input type='file' />");
+            }
+        });
+    
 });

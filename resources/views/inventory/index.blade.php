@@ -71,6 +71,9 @@
             @endif
             </select>
         </div>
+        <a href="javascript:;" class="btn btn-icon-only default">
+            <i class="fa fa-plus white"></i>
+        </a>
     </div>
     <h4 class="font-blue-ebonyclay"> Purchase Unit (PU)</h4>
     <div class="form-group">
@@ -84,6 +87,9 @@
                 @endif
             </select>
         </div>
+        <a href="javascript:;" class="btn btn-icon-only default">
+            <i class="fa fa-plus white"></i>
+        </a>
     </div>
     <h4 class="font-blue-ebonyclay"> Purchase Unit Count</h4>
     <div class="form-group">
@@ -109,6 +115,9 @@
                 @endif
             </select>
         </div>
+        <a href="javascript:;" class="btn btn-icon-only default">
+            <i class="fa fa-plus white"></i>
+        </a>
     </div>
     <h4>Number of Count Units per Purchase Unit (# of CU per PU)</h4>
     <div class="form-group">
@@ -130,6 +139,9 @@
                 @endforeach
                 @endif
             </select> 
+            <a href="javascript:;" class="btn btn-icon-only default">
+                <i class="fa fa-plus white"></i>
+            </a>
         </div>
     </div>
     <div class="form-group"></div>
@@ -150,7 +162,46 @@
     </div>
      
 </div>
-
+<br>
+<div>
+<h4 class="font-blue-ebonyclay"> Purchase Options</h4>
+<div class="form-group col-md-12">
+    <div class="table-toolbar">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="btn-group">
+                    <button id="purchase_editable_table_new" class="btn btn-circle green-turquoise"> Add New
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped table-hover table-bordered" id="purchase_editable_table">
+        <thead>
+            <tr>
+                <th> Purchase Unit (PU) </th>
+                <th> Quantity </th>
+                <th>Price</th>
+                <th>edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="">
+                <td>  </td>
+                <td>  </td>
+                <td>
+                    <a class="edit btn btn-circle green-turquoise" href="javascript:;"> Edit </a>
+                </td>
+                <td>
+                    <a class="delete btn btn-circle green-turquoise" href="javascript:;"> Delete </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
 <div class="form-actions" style="margin-top: 62px;">
     <div class="row">
         <div class="col-md-offset-0 col-md-9">

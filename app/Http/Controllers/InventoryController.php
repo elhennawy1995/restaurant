@@ -123,11 +123,13 @@ class InventoryController extends Controller
     {
         if( InventoryItem::find($id)->update( $request->all() ) )
         {
-            return redirect('/inventory');
+            if(!$request->ajax())
+                return redirect('/inventory');
         }
         else
-        {
-             return redirect()->back();
+        {   
+            if(!$request->ajax())
+                return redirect()->back();
         }
     }
 
