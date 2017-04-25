@@ -13,12 +13,12 @@ class InventoryPurchaseUnitsTableSeeder extends Seeder
     {
        App\PurchaseUnit::insert(
         [
-            ['name'=>'cup'],
-            ['name'=>'teaspoon'],
-            ['name'=>'gram'],
-            ['name'=>'can'],
-            ['name'=>'box'],
-            ['name'=>'inch'],
+            ['name'=>'Bag'],
+            ['name'=>'Bottle'],
+            ['name'=>'Pack'],
+            ['name'=>'Can'],
+            ['name'=>'Box'],
+            ['name'=>'Piece'],
         ]
         );
     }

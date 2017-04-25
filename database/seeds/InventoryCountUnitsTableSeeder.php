@@ -15,10 +15,11 @@ class InventoryCountUnitsTableSeeder extends Seeder
         [
             ['name'=>'ounces (oz)'],
             ['name'=>'fluid ounces (fl oz)'],
-            ['name'=>'gallon (gal)'],
+            ['name'=>'ml'],
             ['name'=>'Pound'],
-            ['name'=>'quart (qt)'],
-            ['name'=>'pint (pt)'],
+            ['name'=>'tea spoon'],
+            ['name'=>'table spoon'],
+            ['name'=>'cup'],
         ]
         );
     }
