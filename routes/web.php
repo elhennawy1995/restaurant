@@ -38,9 +38,11 @@ Route::group(['middleware'=>['auth','web']],function (){
 	Route::get('/sales/top-items/{filter?}','SalesController@top_items');
 	Route::get('/sales/quick-stats/{filter?}','SalesController@quick_stats');
 	Route::get('/sales/top-items-percentage/{filter?}','SalesController@top_items_percentage');
-	Route::get('/sales/import-data','SalesController@import_data');
+	Route::get('/sales','SalesController@index');
+	Route::post('/sales/import-data','SalesController@import_data');
 	Route::get('/sales/check-sales-data','SalesController@check_sales_data');
 	Route::get('/sales/forecast/{filter?}','SalesController@forecast');
+	Route::resource('/clover','CloverController');
 
 });
 

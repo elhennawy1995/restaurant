@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Sale;
 use App\User;
+use Auth;
 use Carbon\Carbon;
 use Excel;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class SalesController extends Controller
 {
@@ -160,23 +161,32 @@ class SalesController extends Controller
     }
 
 
-    public function import_data()
-    {
-        $count = 0;
-        $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
-        Excel::load('LineItems-20170309_0032_CST.csv', function($reader) use ($restaurant,$count){
-                // Getting all results
-                $result = $reader->get()->toArray();
-                foreach ($result as $row) {
-                    $row['line_item_date'] = Carbon::parse($row['line_item_date'])->toDateTimeString();
-                    $row['restaurant_id']=$restaurant->id;
-                    if(Sale::create($row))
-                    {
-                        $count++;
-                    }
-                }
-                echo $count." records has been added";
-        });
+    public function import_data(Request $request)
+    {   
+        if ($request->hasFile('csv')) 
+            {
+                if ($request->file('csv')->isValid())
+                {
+                    $count = 0;
+                    $restaurant = User::find(Auth::user()->id)->restaurant()->get()->first();
+                    Excel::load($request->file('csv')->path(), function($reader) use ($restaurant,$count){
+                            // Getting all results
+                            $result = $reader->get()->toArray();
+                            foreach ($result as $row) {
+                                $row['line_item_date'] = Carbon::parse($row['line_item_date'])->toDateTimeString();
+                                $row['restaurant_id']=$restaurant->id;
+                                if(Sale::create($row))
+                                {
+                                    $count++;
+                                }
+                            }
+                           
+                    });
+               }
+               return redirect('/'); 
+            }
+            else
+                return redirect()->back();    
     }
     public function check_sales_data()
     {
@@ -242,7 +252,7 @@ class SalesController extends Controller
      */
     public function index()
     {
-        //
+        return view('sales.index');
     }
 
     /**

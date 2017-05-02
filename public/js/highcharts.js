@@ -172,7 +172,14 @@ jQuery(document).ready(function() {
             }
             else
             {
-                $('.page-content').html("<h3>Uploade sales data</h3><input type='file' />");
+                // $('.page-content').html(
+                //     "<h3>Uploade sales data</h3><form action='/restaurant' class='form-horizontal' method='post'><input type='file' name='csv'/></br><button type='submit' class='btn btn-circle green-turquoise'>Uploade</button></form>");
+                 if(window.location.href.indexOf("/sales") > -1) {
+                    }
+                    else
+                    {
+                         window.location = "/sales";
+                    }
             }
         });
     
