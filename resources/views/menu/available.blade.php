@@ -9,7 +9,7 @@
     @if($result)
         @foreach($result as $type=>$items)
         <div>
-        <h4>{{$type}}</h4>
+        <h4 style="font-size: 14px; color: #AAB5BC; font-weight: 600; text-transform: uppercase;">{{$type}}</h4>
         <div class="row">
             @foreach($items as $type=>$item)
                 @if(isset($item['unavailable']))
