@@ -4,8 +4,12 @@
             <div class="page-header-inner ">
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
-                    <a href="/">
-                        <img src="{{asset('layouts/admin2/img/logo-default.png')}}" alt="logo" class="logo-default" /> </a>
+                    <a href="/" style=" font-size: 34px; color: white; text-decoration: none; margin: -14px;">
+                       <!--  <img src="{{asset('layouts/admin2/img/logo-default.png')}}" alt="logo" class="logo-default" />  -->
+                       <p>
+                       RestHub
+                       </p>
+                    </a>
                     <div class="menu-toggler sidebar-toggler">
                         <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
                     </div>

@@ -14,8 +14,8 @@
             @foreach($items as $type=>$item)
                 @if(isset($item['unavailable']))
                     <!-- <li> <strike>{{$item['name']}}</strike></li> -->
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="dashboard-stat2 " style="background: #e7ecf1 !important;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="dashboard-stat2 " style="background: #ffffff !important;">
                             <div class="display" style="margin-bottom: 0px !important">
                                 <div class="row">
                                     <div class="number col-md-offset-0">
@@ -41,8 +41,8 @@
                     </div
                 @else
                     <!-- <li> {{$item['name']}} </li> -->
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="dashboard-stat2 " style="background: #e7ecf1 !important;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="dashboard-stat2 " style="background: #ffffff !important;">
                             <div class="display" style="margin-bottom: 0px !important">
                                 <div class="row">
                                     <div class="number col-md-offset-0">
