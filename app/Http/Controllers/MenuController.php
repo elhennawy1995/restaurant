@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Disposable;
 use App\Http\Requests\ItemRequest;
 use App\InventoryItem;
 use App\Item;
 use App\ItemPhoto;
 use App\MealType;
+use App\Side;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -225,6 +227,14 @@ class MenuController extends Controller
     {   
         if($item = Item::find($id))
         {   
+            if($side =Side::find($id))
+            {
+                $side->items()->detach();
+            }
+            if($disposable =Disposable::find($id))
+            {
+                $disposables->items()->detach();
+            }
             $item->disposables()->detach();
             $item->sides()->detach();
             $item->categories()->detach();

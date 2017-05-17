@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Side extends Model
+class Disposable extends Model
 {
     protected $table='menu_items';
     public function items()
     {
-        return $this->belongsToMany('App\Item','sides','side_id','item_id');
+        return $this->belongsToMany('App\Item','disposables','disposable_id','item_id');
     }
 }
