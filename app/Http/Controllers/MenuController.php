@@ -233,7 +233,7 @@ class MenuController extends Controller
             }
             if($disposable =Disposable::find($id))
             {
-                $disposables->items()->detach();
+                $disposable->items()->detach();
             }
             $item->disposables()->detach();
             $item->sides()->detach();
