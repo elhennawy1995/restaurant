@@ -137,7 +137,7 @@ class SuppliersController extends Controller
             if($supplier->items())
             {
                 $supplier->items()->detach();
-                $supplier->restriction_period()->detach();
+                $supplier->restriction_period()->delete();
                 if($supplier->delete())
                     return response('Deleted.',200);
             }
