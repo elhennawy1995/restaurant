@@ -141,10 +141,16 @@ class InventoryController extends Controller
      */
     public function destroy($id)
     {
+        if($in = InventoryItem::find($id))
+        {
+            $in->meal()->detach();
+            $in->suppliers()->detach();
+            $in->storage()->detach();
+        }
         if(InventoryItem::find($id)->delete())
-            {
-                return response('Deleted.',200);
-            }
-            return response('error',400);   
+        {
+            return response('Deleted.',200);
+        }
+        return response('error',400);   
     }
 }

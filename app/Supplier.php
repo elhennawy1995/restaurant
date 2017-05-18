@@ -16,7 +16,8 @@ class Supplier extends Model
 
     public function restriction_period()
     {
-    	return $this->hasMany('App\SupplierPurchasePeriod');
+    	return $this->belongsToMany('App\SupplierPurchasePeriod','suppliers_purchase_period',
+            'supplier_id','item_id');
     }
     	
 }

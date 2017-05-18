@@ -37,5 +37,9 @@ class InventoryItem extends Model
     {
         return $this->belongsToMany('App\Storage','item_storage');
     }
+    public function meal()
+    {
+        return $this->belongsToMany('App\ItemIngredient','item_ingredient','inventory_item_id','menu_item_id');
+    }
     	
 }
